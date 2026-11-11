@@ -1,9 +1,32 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
 import { cn } from "../lib/utils";
+import { Container } from "./container";
 
-export function Section({ className, ...props }: HTMLAttributes<HTMLElement>) {
-  return <section className={cn("py-section", className)} {...props} />;
+export type SectionProps = HTMLAttributes<HTMLElement> & {
+  container?: boolean;
+};
+
+export function Section({ id, className, container = true, children, ...props }: SectionProps) {
+  const anchor = id ? (
+    <span id={id} className="block h-0 scroll-mt-[4.5rem]" aria-hidden="true" />
+  ) : null;
+
+  return (
+    <section className={cn("py-section", className)} {...props}>
+      {container ? (
+        <Container>
+          {anchor}
+          {children}
+        </Container>
+      ) : (
+        <>
+          {anchor}
+          {children}
+        </>
+      )}
+    </section>
+  );
 }
 
 export type SectionHeadingProps = {

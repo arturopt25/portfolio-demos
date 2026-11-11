@@ -1,6 +1,7 @@
 export type CtaLink = {
   label: string;
   href: string;
+  analyticsEvent?: string;
 };
 
 export type Media = {

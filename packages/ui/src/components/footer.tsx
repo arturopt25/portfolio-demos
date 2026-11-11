@@ -4,9 +4,14 @@ import { cn } from "../lib/utils";
 import type { NavLink } from "./header";
 import { Container } from "./container";
 
+export type FooterLink = {
+  label: string;
+  href?: string;
+};
+
 export type FooterColumn = {
   title: string;
-  links: NavLink[];
+  links: FooterLink[];
 };
 
 export type FooterProps = {
@@ -56,13 +61,17 @@ export function Footer({
               <h2 className="text-fg text-sm font-semibold">{column.title}</h2>
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
-                  <li key={`${column.title}-${link.href}`}>
-                    <a
-                      href={link.href}
-                      className="text-muted hover:text-fg focus-visible:ring-ring rounded-sm text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
-                    >
-                      {link.label}
-                    </a>
+                  <li key={`${column.title}-${link.href ?? link.label}`}>
+                    {link.href ? (
+                      <a
+                        href={link.href}
+                        className="text-muted hover:text-fg focus-visible:ring-ring rounded-sm text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <span className="text-muted text-sm">{link.label}</span>
+                    )}
                   </li>
                 ))}
               </ul>

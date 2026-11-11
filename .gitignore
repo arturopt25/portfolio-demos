@@ -4,9 +4,23 @@ dist/
 .turbo/
 out/
 coverage/
+.lighthouseci/
 *.tsbuildinfo
 *.log
-.env
-.env.local
-.env.*.local
+
+# Environment and secrets
+.env*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS and editor files
 .DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo

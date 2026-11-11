@@ -19,6 +19,7 @@ export type HeroProps = {
   secondaryCta?: CtaLink;
   media?: ReactNode;
   mediaAspect?: "video" | "square" | "wide";
+  compact?: boolean;
   className?: string;
 };
 
@@ -38,22 +39,27 @@ export function Hero({
   secondaryCta,
   media,
   mediaAspect = "video",
+  compact = false,
   className,
 }: HeroProps) {
   const isCentered = variant === "corporate";
   const hasMedia = Boolean(media);
+  const anchor = id ? (
+    <span id={id} className="block h-0 scroll-mt-[4.5rem]" aria-hidden="true" />
+  ) : null;
 
   return (
     <section
-      id={id}
       className={cn(
-        "py-section relative overflow-hidden",
+        "relative overflow-hidden",
+        compact ? "sm:py-section pt-10 pb-8" : "py-section",
         variant === "corporate" && "bg-surface",
         variant === "agency" && "from-primary-soft/70 via-bg to-bg bg-gradient-to-b",
         className,
       )}
     >
       <Container>
+        {anchor}
         <div
           className={cn(
             "grid items-center gap-10",
@@ -89,13 +95,22 @@ export function Hero({
                 )}
               >
                 {primaryCta ? (
-                  <LinkButton href={primaryCta.href} size="lg">
+                  <LinkButton
+                    href={primaryCta.href}
+                    size="lg"
+                    data-analytics={primaryCta.analyticsEvent}
+                  >
                     {primaryCta.label}
                     <ArrowRightIcon className="h-4 w-4" />
                   </LinkButton>
                 ) : null}
                 {secondaryCta ? (
-                  <LinkButton href={secondaryCta.href} variant="secondary" size="lg">
+                  <LinkButton
+                    href={secondaryCta.href}
+                    variant="secondary"
+                    size="lg"
+                    data-analytics={secondaryCta.analyticsEvent}
+                  >
                     {secondaryCta.label}
                   </LinkButton>
                 ) : null}

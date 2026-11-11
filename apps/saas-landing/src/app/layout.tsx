@@ -12,11 +12,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteName = "FlowDesk";
-const baseUrl = "https://flowdesk-demo.pages.dev";
+const siteName = "Casefern";
+const baseUrl = "https://casefern-demo.pages.dev";
 
 export const metadata: Metadata = createMetadata({
-  title: "FlowDesk — Customer support that flows",
+  title: "Casefern — Customer support that flows",
   description:
     "A fictional B2B SaaS demo: a shared inbox, automations, and reporting for modern support teams.",
   siteName,

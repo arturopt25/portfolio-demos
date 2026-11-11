@@ -1,0 +1,101 @@
+# Casefern — SaaS landing demo
+
+A fictional B2B SaaS landing page built with the Folio starter kit. Casefern is
+not a real product; all names, pricing, and claims are demo content.
+
+## Live demo
+
+- **URL:** `https://casefern-demo.pages.dev` (Cloudflare Pages placeholder)
+- **Status:** static export, no server runtime
+- **Stack:** Next.js App Router, TypeScript, Tailwind CSS v3, `@folio/ui`
+
+## What this demo shows
+
+- Hero A/B copy via `?v=a` / `?v=b`
+- Social proof, features, monthly/annual pricing, FAQ, and lead form
+- Shared `@folio/ui` components and design tokens
+- Consent-gated analytics with a no-op default
+- Mock form-submission adapter with an inline success state
+- Metadata, `SoftwareApplication` + `FAQPage` JSON-LD, and a generated OG image
+- Static pages for `/privacy/` and `/terms/`
+
+## Lighthouse metrics
+
+Mobile Lighthouse, static production build, 393×852, 3 runs.
+
+| Category       | Baseline (Phase 1 shell) | Phase 2 run 1 | Run 2 | Run 3 |  Median | Delta |
+| -------------- | -----------------------: | ------------: | ----: | ----: | ------: | ----: |
+| Performance    |                       99 |           100 |   100 |   100 | **100** |    +1 |
+| Accessibility  |                      100 |           100 |   100 |   100 | **100** |     0 |
+| Best Practices |                       96 |           100 |   100 |   100 | **100** |    +4 |
+| SEO            |                      100 |           100 |   100 |   100 | **100** |     0 |
+
+Target: **≥95** in every category. All categories meet the target.
+
+## Reproduce manually
+
+```bash
+pnpm --filter @folio/saas-landing build
+npx serve apps/saas-landing/dist -l 3000
+```
+
+Then either:
+
+1. Open `http://localhost:3000` in an incognito Chrome window, open DevTools →
+   Lighthouse → **Mobile** → Analyze page reload.
+2. Or run:
+
+```bash
+npx lighthouse http://localhost:3000 --view
+```
+
+## Lighthouse CI
+
+```bash
+pnpm --filter @folio/saas-landing build
+pnpm --filter @folio/saas-landing lighthouse
+pnpm --filter @folio/saas-landing lighthouse:report
+```
+
+The config is `apps/saas-landing/.lighthouserc.cjs`:
+
+- `staticDistDir: "./dist"`
+- `url: ["/"]` (relative; no hardcoded localhost URL)
+- 3 runs
+- Mobile emulation at 393×852
+- Assertions at `0.95` for all four categories
+
+On WSL, `chrome-launcher` may fail with an invalid Windows temp path. In that
+case, point `CHROME_PATH` to a wrapper that rewrites `--user-data-dir` to a Linux
+path, or run Lighthouse manually with `--port` against a Chrome started with
+`--remote-debugging-port=9222`.
+
+## Known limitations
+
+- The `?v=b` hero variant is applied client-side after hydration. A static
+  export cannot read the query string at build time, so the server fallback uses
+  variant A and the client swaps in variant B. Measured CLS impact: 0–0.012.
+- The `og:image` and canonical base URL currently use
+  `https://casefern-demo.pages.dev` as a placeholder. Update them to the final
+  Cloudflare Pages URL after deployment.
+
+## Manual checks
+
+- `/` renders Casefern as a fictional demo brand.
+- `/?v=b` swaps the hero headline; the inactive headline is not rendered.
+- Pricing toggles between monthly and annual prices.
+- FAQ items open and close natively.
+- Form shows validation errors for empty fields and an inline success state after
+  a valid submission.
+- `/privacy/` and `/terms/` are reachable and marked as demo pages.
+- Deep links `/#pricing`, `/#faq`, and `/#contact` land below the sticky header.
+- `/favicon.ico` and `/icon.svg` return 200.
+- No console errors.
+
+## Deploy
+
+Cloudflare Pages project settings:
+
+- **Build command:** `pnpm install --frozen-lockfile && pnpm --filter @folio/saas-landing build`
+- **Output directory:** `apps/saas-landing/dist`
+- **Framework preset:** None / static

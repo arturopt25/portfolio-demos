@@ -31,6 +31,7 @@ export type PricingProps = {
     perMonth?: string;
     annualNote?: string;
   };
+  onBillingChange?: (billing: "monthly" | "annual") => void;
   className?: string;
 };
 
@@ -41,6 +42,7 @@ export function Pricing({
   description,
   plans,
   labels,
+  onBillingChange,
   className,
 }: PricingProps) {
   const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
@@ -49,6 +51,11 @@ export function Pricing({
   const annualLabel = labels?.annual ?? "Annual";
   const perMonthLabel = labels?.perMonth ?? "/mo";
   const annualNote = labels?.annualNote ?? "billed annually";
+
+  function changeBilling(next: "monthly" | "annual") {
+    setBilling(next);
+    onBillingChange?.(next);
+  }
 
   return (
     <Section id={id} className={className}>
@@ -63,7 +70,7 @@ export function Pricing({
           <button
             type="button"
             aria-pressed={billing === "monthly"}
-            onClick={() => setBilling("monthly")}
+            onClick={() => changeBilling("monthly")}
             className={cn(
               "focus-visible:ring-ring rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none",
               billing === "monthly" ? "bg-elevated text-fg shadow-sm" : "text-muted hover:text-fg",
@@ -74,7 +81,7 @@ export function Pricing({
           <button
             type="button"
             aria-pressed={billing === "annual"}
-            onClick={() => setBilling("annual")}
+            onClick={() => changeBilling("annual")}
             className={cn(
               "focus-visible:ring-ring rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none",
               billing === "annual" ? "bg-elevated text-fg shadow-sm" : "text-muted hover:text-fg",
