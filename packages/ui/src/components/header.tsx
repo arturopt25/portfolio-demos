@@ -91,7 +91,7 @@ export function Header({
         <div className="hidden items-center gap-2 md:flex">
           {actions}
           {cta ? (
-            <LinkButton href={cta.href} size="sm">
+            <LinkButton href={cta.href} size="sm" data-analytics={cta.analyticsEvent}>
               {cta.label}
             </LinkButton>
           ) : null}
@@ -137,7 +137,11 @@ export function Header({
             <div className="border-border flex flex-col gap-2 border-t pt-4">
               {actions}
               {cta ? (
-                <LinkButton href={cta.href} onClick={() => setOpen(false)}>
+                <LinkButton
+                  href={cta.href}
+                  onClick={() => setOpen(false)}
+                  data-analytics={cta.analyticsEvent}
+                >
                   {cta.label}
                 </LinkButton>
               ) : null}

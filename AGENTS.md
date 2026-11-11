@@ -14,14 +14,14 @@ This file is the primary instruction set for AI agents working in this repositor
 
 Current demo brands:
 
-| App                    | Brand                  | Status                    |
-| ---------------------- | ---------------------- | ------------------------- |
-| `apps/saas-landing`    | **Casefern**           | Fictional B2B SaaS demo   |
-| `apps/corporate-site`  | **Ferrowind Partners** | Fictional industrial demo |
-| `apps/agency-campaign` | **Catalyst Studio**    | Fictional agency demo     |
+| App                    | Brand                  | Status                                   |
+| ---------------------- | ---------------------- | ---------------------------------------- |
+| `apps/saas-landing`    | **Casefern**           | Fictional B2B SaaS demo                  |
+| `apps/corporate-site`  | **Ferrowind Partners** | Fictional industrial demo                |
+| `apps/agency-campaign` | **Catalyst Studio**    | Fictional agency demo (Phase 4 complete) |
 
-`Catalyst Studio` is a provisional name reserved for Phase 4 only. Do not use it
-in Phase 3 work.
+`Catalyst Studio` is the Phase 4 brand. Keep it isolated to
+`apps/agency-campaign`; do not reuse it in other demos.
 
 ## Stack and conventions
 
@@ -99,11 +99,52 @@ When changing anything in `packages/ui`:
 - **Public repo hygiene:** run a secret/absolute-path scan before every commit.
   Keep placeholder URLs centralized in one brand/config file.
 
+## Lessons from Phase 4 (keep these patterns)
+
+- **Theme allowlist:** `?theme=` is validated against a small `THEMES` array in
+  `src/lib/theme.ts`. A synchronous inline script in `<head>` sets or removes
+  `data-theme` on `<html>` before first paint, so theme switches are CLS-free.
+  Add `suppressHydrationWarning` to `<html>` because the script mutates it before
+  hydration. Never write the theme to storage without consent.
+- **Build-time default theme:** read `NEXT_PUBLIC_DEFAULT_THEME` in the root
+  layout and fall back to a brand config value. The same fallback is embedded in
+  the blocking script; invalid env and query values must both land on the default.
+- **Attribution is memory-first:** read UTM values from the URL immediately, but
+  only write to `sessionStorage` after consent. On a late consent decision,
+  re-read the current URL and fall back to the in-memory capture so the campaign
+  is not lost. Reduce `gclid`/`fbclid` to booleans and never store their values.
+  Sanitize and length-limit every value (120 chars in this demo).
+- **Two consent states:** the cookie banner owns analytics/storage consent
+  (`catalyst-consent`); the form has its own privacy checkbox. Keep them distinct
+  but aware of each other.
+- **noindex vs robots.txt:** do not disallow a noindex page in `robots.txt`.
+  Crawlers must be able to fetch it to see the meta robots tag. Exclude it from
+  the sitemap instead.
+- **Shared UI analytics:** `Header` now forwards `cta.analyticsEvent` to
+  `data-analytics` on both desktop and mobile CTAs. The change is
+  backward-compatible; apps without the property render no attribute.
+- **LHCI per theme:** put `/?theme=dark` and `/?theme=bold` in the LHCI `url`
+  list. Group reports by `pathname + search` so themes are not merged. Run
+  against `staticDistDir`; never the dev server.
+- **WSL LHCI temp dir:** on WSL, `chrome-launcher` can try to create the Chrome
+  profile in a Windows temp path and fail with `undefined:/Users/...`. A
+  **local-only** fix is to prepend a real Windows AppData path to `PATH` and set
+  `CHROME_PATH`. Do not commit machine-specific paths or wrapper scripts.
+- **Contrast per theme:** compute WCAG ratios for body text, muted text, links,
+  badges, primary/secondary buttons, success/danger, and the focus ring in every
+  theme. The Phase 4 lowest pair is 4.90:1 (dark theme, primary link on elevated
+  surface); normal text must stay ≥ 4.5:1.
+- **Nested theme previews:** a swatch that should always show the light palette
+  needs an explicit `[data-theme="default"]` token block. A nested element
+  without a `data-theme` inherits the page's active theme.
+
 ## Definition of Done
 
 - [ ] `pnpm lint`, `pnpm typecheck`, and `pnpm build` pass.
 - [ ] Lighthouse mobile scores meet the current phase target
       (Phase 2+: **≥95** in all four categories).
+- [ ] For themeable demos, LHCI is run per theme and WCAG AA contrast is verified
+      in every theme.
 - [ ] Keyboard navigable; focus states visible; inactive content hidden from
       assistive tech.
 - [ ] No real trademarks or unlicensed assets.

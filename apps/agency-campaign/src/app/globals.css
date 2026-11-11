@@ -11,11 +11,86 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     @apply bg-bg text-fg antialiased;
   }
 
   ::selection {
     @apply bg-primary text-primary-fg;
+  }
+
+  /*
+   * Explicit default tokens. The page default is `:root`, but the hero swatch
+   * preview sets data-theme="default" on a nested card so it stays light even
+   * when the page itself is dark or bold.
+   */
+  [data-theme="default"] {
+    color-scheme: light;
+
+    --color-bg: 255 255 255;
+    --color-fg: 15 23 42;
+    --color-muted: 71 85 105;
+    --color-surface: 248 250 252;
+    --color-elevated: 255 255 255;
+    --color-border: 203 213 225;
+    --color-primary: 67 56 202;
+    --color-primary-hover: 55 48 163;
+    --color-primary-fg: 255 255 255;
+    --color-primary-soft: 238 242 255;
+    --color-ring: 37 99 235;
+  }
+
+  /*
+   * Bold campaign theme. Only tokens change; every component keeps its markup.
+   * The blocking head script maps ?theme=bold to data-theme="bold" before paint.
+   */
+  [data-theme="bold"] {
+    color-scheme: dark;
+
+    --color-bg: 11 11 15;
+    --color-fg: 255 255 255;
+    --color-muted: 199 199 209;
+    --color-surface: 22 22 29;
+    --color-elevated: 31 31 41;
+    --color-border: 58 58 72;
+    --color-primary: 255 212 0;
+    --color-primary-hover: 255 228 92;
+    --color-primary-fg: 11 11 15;
+    --color-primary-soft: 58 48 0;
+    --color-secondary: 125 211 252;
+    --color-accent: 255 90 31;
+    --color-success: 74 222 128;
+    --color-danger: 255 138 138;
+    --color-ring: 255 212 0;
+
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.55), 0 12px 32px rgb(0 0 0 / 0.6);
+    --shadow-float: 0 4px 12px rgb(0 0 0 / 0.6), 0 24px 64px rgb(0 0 0 / 0.7);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply bg-bg text-fg ring-ring shadow-card absolute top-2 left-2 z-50 -translate-y-24 rounded-md px-4 py-2 text-sm font-semibold focus:translate-y-0 focus:ring-2 focus:outline-none;
   }
 }
