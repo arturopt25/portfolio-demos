@@ -1,0 +1,20 @@
+{
+  "name": "@folio/config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "tsconfig",
+    "eslint.mjs",
+    "tailwind-preset.js",
+    "tailwind-preset.d.ts",
+    "tokens.css"
+  ],
+  "exports": {
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./tsconfig/next.json": "./tsconfig/next.json",
+    "./tsconfig/library.json": "./tsconfig/library.json",
+    "./eslint": "./eslint.mjs",
+    "./tailwind-preset": "./tailwind-preset.js",
+    "./tokens.css": "./tokens.css"
+  }
+}

@@ -1,0 +1,56 @@
+:root {
+  color-scheme: light;
+
+  --color-bg: 255 255 255;
+  --color-fg: 15 23 42;
+  --color-muted: 71 85 105;
+  --color-surface: 248 250 252;
+  --color-elevated: 255 255 255;
+  --color-border: 203 213 225;
+  --color-primary: 67 56 202;
+  --color-primary-hover: 55 48 163;
+  --color-primary-fg: 255 255 255;
+  --color-primary-soft: 238 242 255;
+  --color-secondary: 3 105 161;
+  --color-accent: 180 83 9;
+  --color-success: 21 128 61;
+  --color-danger: 185 28 28;
+  --color-ring: 37 99 235;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06), 0 12px 32px rgb(15 23 42 / 0.08);
+  --shadow-float: 0 4px 12px rgb(15 23 42 / 0.1), 0 24px 64px rgb(15 23 42 / 0.14);
+
+  --space-section: clamp(4rem, 10vw, 7rem);
+}
+
+/* Dark tokens are pre-wired but not activated. Toggle with data-theme="dark". */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: 2 6 23;
+  --color-fg: 241 245 249;
+  --color-muted: 148 163 184;
+  --color-surface: 15 23 42;
+  --color-elevated: 30 41 59;
+  --color-border: 51 65 85;
+  --color-primary: 129 140 248;
+  --color-primary-hover: 165 180 252;
+  --color-primary-fg: 2 6 23;
+  --color-primary-soft: 30 27 75;
+  --color-secondary: 56 189 248;
+  --color-accent: 251 191 36;
+  --color-success: 74 222 128;
+  --color-danger: 248 113 113;
+  --color-ring: 129 140 248;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px rgb(0 0 0 / 0.5);
+  --shadow-float: 0 4px 12px rgb(0 0 0 / 0.45), 0 24px 64px rgb(0 0 0 / 0.55);
+}
