@@ -5,7 +5,7 @@ not a real product; all names, pricing, and claims are demo content.
 
 ## Live demo
 
-- **URL:** `https://casefern-demo.pages.dev` (Cloudflare Pages placeholder)
+- **URL:** `https://casefern-demo.pages.dev` (pending deploy)
 - **Status:** static export, no server runtime
 - **Stack:** Next.js App Router, TypeScript, Tailwind CSS v3, `@folio/ui`
 
@@ -78,6 +78,8 @@ path, or run Lighthouse manually with `--port` against a Chrome started with
 - The `og:image` and canonical base URL currently use
   `https://casefern-demo.pages.dev` as a placeholder. Update them to the final
   Cloudflare Pages URL after deployment.
+- `robots.txt` and `sitemap.xml` are not implemented in this demo. Add Next.js
+  metadata routes if the demo is attached to a real domain.
 
 ## Manual checks
 
@@ -96,6 +98,11 @@ path, or run Lighthouse manually with `--port` against a Chrome started with
 
 Cloudflare Pages project settings:
 
+- **Project name:** `casefern-demo`
 - **Build command:** `pnpm install --frozen-lockfile && pnpm --filter @folio/saas-landing build`
 - **Output directory:** `apps/saas-landing/dist`
 - **Framework preset:** None / static
+- **Environment variables:** `NODE_VERSION=24.15.0`, `PNPM_VERSION=11.5.1`
+
+See [`docs/DEPLOY.md`](../../docs/DEPLOY.md) for the full walkthrough and
+post-deploy checklist.

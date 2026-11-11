@@ -9,7 +9,7 @@ form, and a noindex thank-you page.
 > are invented for a portfolio demonstration. No real company, client, campaign,
 > testimonial, or trademark is represented.
 
-- **Planned demo URL:** <https://catalyst-studio-demo.pages.dev>
+- **Live demo:** <https://catalyst-studio-demo.pages.dev> (pending deploy)
 - **Stack:** Next.js 16 App Router, static export, Tailwind CSS v3, shared
   `@folio/ui`, `@folio/seo`, and `@folio/config` packages.
 - **Runtime:** none. No API routes, no server, no paid service. Deploy the
@@ -211,10 +211,15 @@ export.
 
 Cloudflare Pages, one project:
 
+- **Project name:** `catalyst-studio-demo`
 - Build command: `pnpm install --frozen-lockfile && pnpm --filter @folio/agency-campaign build`
 - Output directory: `apps/agency-campaign/dist`
-- No environment variables required. Set `NEXT_PUBLIC_DEFAULT_THEME` only if the
-  campaign should ship with a non-default palette.
+- Environment variables: `NODE_VERSION=24.15.0`, `PNPM_VERSION=11.5.1`.
+  `NEXT_PUBLIC_DEFAULT_THEME` is optional; set it only if the campaign should
+  ship with a non-default palette.
+
+See [`docs/DEPLOY.md`](../../docs/DEPLOY.md) for the full walkthrough and
+post-deploy checklist.
 
 ## Known limitations
 

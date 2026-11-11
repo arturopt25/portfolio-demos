@@ -6,7 +6,7 @@ metrics, and contact details are invented for portfolio purposes.
 
 ## Live demo
 
-- **URL:** `https://ferrowind-demo.pages.dev` (Cloudflare Pages placeholder)
+- **URL:** `https://ferrowind-demo.pages.dev` (pending deploy)
 - **Status:** static export, no server runtime, no API routes
 - **Stack:** Next.js App Router, TypeScript strict, Tailwind CSS v3, `@folio/ui`,
   `@folio/seo`, `next-mdx-remote/rsc`, `gray-matter`
@@ -155,6 +155,11 @@ At 393×852 and 1440×900:
 
 Cloudflare Pages project settings:
 
+- **Project name:** `ferrowind-demo`
 - **Build command:** `pnpm install --frozen-lockfile && pnpm --filter @folio/corporate-site build`
 - **Output directory:** `apps/corporate-site/dist`
 - **Framework preset:** None / static
+- **Environment variables:** `NODE_VERSION=24.15.0`, `PNPM_VERSION=11.5.1`
+
+See [`docs/DEPLOY.md`](../../docs/DEPLOY.md) for the full walkthrough and
+post-deploy checklist.
