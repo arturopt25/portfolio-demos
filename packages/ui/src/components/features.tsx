@@ -43,15 +43,15 @@ export function Features({
         {items.map((item) => (
           <li
             key={item.title}
-            className="border-border bg-elevated shadow-card rounded-lg border p-6"
+            className="rounded-lg border border-border bg-elevated p-6 shadow-card"
           >
             {item.icon ? (
-              <div className="bg-primary-soft text-primary mb-4 flex h-10 w-10 items-center justify-center rounded-md">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-primary-soft text-primary">
                 {item.icon}
               </div>
             ) : null}
-            <h3 className="text-fg text-base font-semibold">{item.title}</h3>
-            <p className="text-muted mt-2 text-sm leading-6">{item.description}</p>
+            <h3 className="text-base font-semibold text-fg">{item.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-muted">{item.description}</p>
           </li>
         ))}
       </ul>

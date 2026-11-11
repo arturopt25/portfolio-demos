@@ -23,16 +23,16 @@ export function ProcessSection({
         {content.steps.map((step, index) => (
           <li
             key={step.title}
-            className="border-border bg-elevated shadow-card rounded-lg border p-6"
+            className="rounded-lg border border-border bg-elevated p-6 shadow-card"
           >
             <span
               aria-hidden="true"
-              className="text-primary text-xs font-bold tracking-[0.2em] tabular-nums"
+              className="text-xs font-bold tabular-nums tracking-[0.2em] text-primary"
             >
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="text-fg mt-3 text-base font-semibold">{step.title}</h3>
-            <p className="text-muted mt-2 text-sm leading-6">{step.description}</p>
+            <h3 className="mt-3 text-base font-semibold text-fg">{step.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-muted">{step.description}</p>
           </li>
         ))}
       </ol>

@@ -128,8 +128,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         }}
       />
 
-      <Section className="border-border bg-surface border-t py-6">
-        <p className="text-muted text-center text-xs leading-6">{dictionary.footer.legal}</p>
+      <Section className="border-t border-border bg-surface py-6">
+        <p className="text-center text-xs leading-6 text-muted">{dictionary.footer.legal}</p>
       </Section>
     </>
   );

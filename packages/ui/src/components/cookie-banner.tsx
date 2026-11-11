@@ -53,14 +53,14 @@ export function CookieBanner({
       aria-label="Cookie consent"
       className={cn("fixed inset-x-0 bottom-0 z-50 p-4", className)}
     >
-      <div className="border-border bg-elevated shadow-float mx-auto max-w-3xl rounded-lg border p-5">
+      <div className="mx-auto max-w-3xl rounded-lg border border-border bg-elevated p-5 shadow-float">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-xl">
-            <h2 className="text-fg text-sm font-semibold">{title}</h2>
-            <p className="text-muted mt-1 text-sm leading-6">{description}</p>
+            <h2 className="text-sm font-semibold text-fg">{title}</h2>
+            <p className="mt-1 text-sm leading-6 text-muted">{description}</p>
             <a
               href={policyHref}
-              className="text-primary focus-visible:ring-ring mt-2 inline-block rounded-sm text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+              className="mt-2 inline-block rounded-sm text-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {policyLabel}
             </a>

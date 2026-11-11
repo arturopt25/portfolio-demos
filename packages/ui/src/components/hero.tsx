@@ -52,9 +52,9 @@ export function Hero({
     <section
       className={cn(
         "relative overflow-hidden",
-        compact ? "sm:py-section pt-10 pb-8" : "py-section",
+        compact ? "pb-8 pt-10 sm:py-section" : "py-section",
         variant === "corporate" && "bg-surface",
-        variant === "agency" && "from-primary-soft/70 via-bg to-bg bg-gradient-to-b",
+        variant === "agency" && "bg-gradient-to-b from-primary-soft/70 via-bg to-bg",
         className,
       )}
     >
@@ -72,7 +72,7 @@ export function Hero({
 
             <h1
               className={cn(
-                "font-display text-fg font-bold tracking-tight",
+                "font-display font-bold tracking-tight text-fg",
                 variant === "agency"
                   ? "text-4xl leading-[1.05] sm:text-5xl lg:text-6xl"
                   : "text-4xl leading-tight sm:text-5xl lg:text-6xl",
@@ -82,7 +82,7 @@ export function Hero({
             </h1>
 
             <p
-              className={cn("text-muted mt-5 text-lg leading-8", isCentered && "mx-auto max-w-2xl")}
+              className={cn("mt-5 text-lg leading-8 text-muted", isCentered && "mx-auto max-w-2xl")}
             >
               {description}
             </p>
@@ -121,7 +121,7 @@ export function Hero({
           {media ? (
             <div
               className={cn(
-                "border-border bg-elevated shadow-card w-full overflow-hidden rounded-xl border",
+                "w-full overflow-hidden rounded-xl border border-border bg-elevated shadow-card",
                 aspectClasses[mediaAspect],
                 isCentered && "mt-10",
               )}

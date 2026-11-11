@@ -14,7 +14,7 @@ export function Breadcrumbs({
 }) {
   return (
     <nav aria-label={label} className={className}>
-      <ol className="text-muted flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 
@@ -23,7 +23,7 @@ export function Breadcrumbs({
               {item.href && !isLast ? (
                 <a
                   href={item.href}
-                  className="hover:text-fg focus-visible:ring-ring rounded-sm underline-offset-4 transition-colors hover:underline focus-visible:ring-2 focus-visible:outline-none"
+                  className="rounded-sm underline-offset-4 transition-colors hover:text-fg hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {item.label}
                 </a>

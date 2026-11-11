@@ -22,18 +22,18 @@ export function SiteHeader() {
 
 export function MinimalHeader() {
   return (
-    <header className="border-border/80 bg-bg/90 sticky top-0 z-40 border-b backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/90 backdrop-blur">
       <Container className="flex h-16 items-center justify-between gap-4">
         <a
           href="/"
-          className="text-fg focus-visible:ring-ring flex items-center gap-2 rounded-sm text-base font-bold tracking-tight focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="flex items-center gap-2 rounded-sm text-base font-bold tracking-tight text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <BrandMark />
         </a>
 
         <a
           href="/"
-          className="text-primary focus-visible:ring-ring rounded-sm text-sm font-semibold underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+          className="rounded-sm text-sm font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           Back to campaign
         </a>
@@ -62,31 +62,31 @@ export function SiteFooter() {
 
 export function MinimalFooter() {
   return (
-    <footer className="border-border bg-surface border-t">
+    <footer className="border-t border-border bg-surface">
       <Container className="py-10">
-        <p className="text-muted text-xs leading-6">{brand.demoNotice}</p>
+        <p className="text-xs leading-6 text-muted">{brand.demoNotice}</p>
         <nav aria-label="Demo links" className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
           <a
             href="/"
-            className="text-primary focus-visible:ring-ring rounded-sm text-xs font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+            className="rounded-sm text-xs font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Home
           </a>
           <a
             href="/privacy/"
-            className="text-primary focus-visible:ring-ring rounded-sm text-xs font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+            className="rounded-sm text-xs font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Privacy
           </a>
           <a
             href="/terms/"
-            className="text-primary focus-visible:ring-ring rounded-sm text-xs font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+            className="rounded-sm text-xs font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Terms
           </a>
           <a
             href="/thank-you/"
-            className="text-primary focus-visible:ring-ring rounded-sm text-xs font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+            className="rounded-sm text-xs font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Thank-you
           </a>

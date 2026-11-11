@@ -105,7 +105,7 @@ export function ContactForm({
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor={fieldId("name")} className="text-fg block text-sm font-medium">
+          <label htmlFor={fieldId("name")} className="block text-sm font-medium text-fg">
             {labels.name}
           </label>
           <input
@@ -118,14 +118,14 @@ export function ContactForm({
             {...register("name")}
           />
           {errors.name ? (
-            <p id={errorId("name")} className="text-danger mt-1 text-sm">
+            <p id={errorId("name")} className="mt-1 text-sm text-danger">
               {errors.name.message}
             </p>
           ) : null}
         </div>
 
         <div>
-          <label htmlFor={fieldId("email")} className="text-fg block text-sm font-medium">
+          <label htmlFor={fieldId("email")} className="block text-sm font-medium text-fg">
             {labels.email}
           </label>
           <input
@@ -138,7 +138,7 @@ export function ContactForm({
             {...register("email")}
           />
           {errors.email ? (
-            <p id={errorId("email")} className="text-danger mt-1 text-sm">
+            <p id={errorId("email")} className="mt-1 text-sm text-danger">
               {errors.email.message}
             </p>
           ) : null}
@@ -146,7 +146,7 @@ export function ContactForm({
       </div>
 
       <div>
-        <label htmlFor={fieldId("company")} className="text-fg block text-sm font-medium">
+        <label htmlFor={fieldId("company")} className="block text-sm font-medium text-fg">
           {labels.company}
         </label>
         <input
@@ -159,14 +159,14 @@ export function ContactForm({
           {...register("company")}
         />
         {errors.company ? (
-          <p id={errorId("company")} className="text-danger mt-1 text-sm">
+          <p id={errorId("company")} className="mt-1 text-sm text-danger">
             {errors.company.message}
           </p>
         ) : null}
       </div>
 
       <div>
-        <label htmlFor={fieldId("message")} className="text-fg block text-sm font-medium">
+        <label htmlFor={fieldId("message")} className="block text-sm font-medium text-fg">
           {labels.message}
         </label>
         <textarea
@@ -178,7 +178,7 @@ export function ContactForm({
           {...register("message")}
         />
         {errors.message ? (
-          <p id={errorId("message")} className="text-danger mt-1 text-sm">
+          <p id={errorId("message")} className="mt-1 text-sm text-danger">
             {errors.message.message}
           </p>
         ) : null}
@@ -191,14 +191,14 @@ export function ContactForm({
             type="checkbox"
             aria-invalid={Boolean(errors.consent)}
             aria-describedby={errors.consent ? errorId("consent") : undefined}
-            className="border-border text-primary focus-visible:ring-ring mt-1 h-4 w-4 rounded focus-visible:ring-2 focus-visible:outline-none"
+            className="mt-1 h-4 w-4 rounded border-border text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             {...register("consent")}
           />
-          <label htmlFor={fieldId("consent")} className="text-muted text-sm leading-6">
+          <label htmlFor={fieldId("consent")} className="text-sm leading-6 text-muted">
             {labels.consent}{" "}
             <a
               href={privacyHref}
-              className="text-primary focus-visible:ring-ring rounded-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+              className="rounded-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {labels.privacy}
             </a>
@@ -206,7 +206,7 @@ export function ContactForm({
           </label>
         </div>
         {errors.consent ? (
-          <p id={errorId("consent")} className="text-danger mt-1 text-sm">
+          <p id={errorId("consent")} className="mt-1 text-sm text-danger">
             {errors.consent.message}
           </p>
         ) : null}
@@ -217,13 +217,13 @@ export function ContactForm({
       </Button>
 
       {status === "success" ? (
-        <p role="status" className="text-success text-sm font-medium">
+        <p role="status" className="text-sm font-medium text-success">
           {labels.success}
         </p>
       ) : null}
 
       {status === "error" ? (
-        <p role="alert" className="text-danger text-sm font-medium">
+        <p role="alert" className="text-sm font-medium text-danger">
           {serverError ?? labels.error}
         </p>
       ) : null}

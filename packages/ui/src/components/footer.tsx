@@ -32,13 +32,13 @@ export function Footer({
   className,
 }: FooterProps) {
   return (
-    <footer className={cn("border-border bg-surface border-t", className)}>
+    <footer className={cn("border-t border-border bg-surface", className)}>
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div className="max-w-sm">
-            <div className="text-fg text-lg font-bold tracking-tight">{brand}</div>
+            <div className="text-lg font-bold tracking-tight text-fg">{brand}</div>
             {description ? (
-              <p className="text-muted mt-3 text-sm leading-6">{description}</p>
+              <p className="mt-3 text-sm leading-6 text-muted">{description}</p>
             ) : null}
             {social.length > 0 ? (
               <ul className="mt-5 flex flex-wrap gap-4">
@@ -46,7 +46,7 @@ export function Footer({
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="text-muted hover:text-fg focus-visible:ring-ring rounded-sm text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+                      className="rounded-sm text-sm font-medium text-muted underline-offset-4 hover:text-fg hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </a>
@@ -58,19 +58,19 @@ export function Footer({
 
           {columns.map((column) => (
             <div key={column.title}>
-              <h2 className="text-fg text-sm font-semibold">{column.title}</h2>
+              <h2 className="text-sm font-semibold text-fg">{column.title}</h2>
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
                   <li key={`${column.title}-${link.href ?? link.label}`}>
                     {link.href ? (
                       <a
                         href={link.href}
-                        className="text-muted hover:text-fg focus-visible:ring-ring rounded-sm text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                        className="rounded-sm text-sm text-muted transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       >
                         {link.label}
                       </a>
                     ) : (
-                      <span className="text-muted text-sm">{link.label}</span>
+                      <span className="text-sm text-muted">{link.label}</span>
                     )}
                   </li>
                 ))}
@@ -79,7 +79,7 @@ export function Footer({
           ))}
         </div>
 
-        <div className="border-border text-muted mt-12 flex flex-col gap-4 border-t pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           {legal ?? <p>Fictional demo content. No real company affiliation.</p>}
         </div>
       </Container>

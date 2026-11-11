@@ -58,7 +58,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
   return (
     <>
-      <Section className="pt-6 pb-0">
+      <Section className="pb-0 pt-6">
         <Breadcrumbs
           label={dictionary.a11y.breadcrumb}
           items={[
@@ -87,11 +87,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
       <Section>
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-fg text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
             {page.intro.title}
           </h2>
           {page.intro.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-muted mt-4 text-base leading-7">
+            <p key={paragraph} className="mt-4 text-base leading-7 text-muted">
               {paragraph}
             </p>
           ))}
@@ -103,11 +103,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           {page.services.map((service) => (
             <article
               key={service.slug}
-              className="border-border bg-elevated shadow-card rounded-xl border p-6 sm:p-8"
+              className="rounded-xl border border-border bg-elevated p-6 shadow-card sm:p-8"
             >
               <div className="grid gap-6 lg:grid-cols-[1fr_1.3fr] lg:gap-10">
                 <div>
-                  <div className="bg-primary-soft text-primary flex h-11 w-11 items-center justify-center rounded-md">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md bg-primary-soft text-primary">
                     <ServiceIcon name={service.icon} className="h-5 w-5" />
                   </div>
                   <span
@@ -115,20 +115,20 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                     className="block h-0 scroll-mt-[5.5rem]"
                     aria-hidden="true"
                   />
-                  <h2 className="font-display text-fg mt-4 text-2xl font-bold tracking-tight">
+                  <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-fg">
                     {service.name}
                   </h2>
-                  <p className="text-muted mt-2 text-base leading-7">{service.summary}</p>
+                  <p className="mt-2 text-base leading-7 text-muted">{service.summary}</p>
                 </div>
                 <div>
-                  <p className="text-muted text-base leading-7">{service.description}</p>
-                  <h3 className="text-fg mt-5 text-sm font-semibold">
+                  <p className="text-base leading-7 text-muted">{service.description}</p>
+                  <h3 className="mt-5 text-sm font-semibold text-fg">
                     {dictionary.services.outcomes}
                   </h3>
                   <ul className="mt-3 space-y-2">
                     {service.outcomes.map((outcome) => (
-                      <li key={outcome} className="text-muted flex gap-2 text-sm leading-6">
-                        <CheckIcon className="text-primary mt-0.5 h-4 w-4 shrink-0" />
+                      <li key={outcome} className="flex gap-2 text-sm leading-6 text-muted">
+                        <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                         {outcome}
                       </li>
                     ))}

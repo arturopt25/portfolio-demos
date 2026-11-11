@@ -118,7 +118,7 @@ export default async function CaseStudyPage({
 
   return (
     <>
-      <Section className="pt-6 pb-0">
+      <Section className="pb-0 pt-6">
         <Breadcrumbs
           label={dictionary.a11y.breadcrumb}
           items={[
@@ -131,36 +131,36 @@ export default async function CaseStudyPage({
 
       <Section className="pt-8">
         <article className="mx-auto max-w-4xl">
-          <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             {study.sector} · {study.year}
           </p>
-          <h1 className="font-display text-fg mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-fg sm:text-5xl">
             {study.title}
           </h1>
-          <p className="text-muted mt-5 text-lg leading-8">{study.summary}</p>
+          <p className="mt-5 text-lg leading-8 text-muted">{study.summary}</p>
 
-          <dl className="border-border mt-8 grid gap-4 border-y py-5 text-sm sm:grid-cols-2">
+          <dl className="mt-8 grid gap-4 border-y border-border py-5 text-sm sm:grid-cols-2">
             <div>
               <dt className="text-muted">{dictionary.caseStudies.client}</dt>
-              <dd className="text-fg mt-1 font-semibold">{study.client}</dd>
+              <dd className="mt-1 font-semibold text-fg">{study.client}</dd>
             </div>
             <div>
               <dt className="text-muted">{dictionary.caseStudies.published}</dt>
-              <dd className="text-fg mt-1 font-semibold">
+              <dd className="mt-1 font-semibold text-fg">
                 <time dateTime={study.publishedAt}>{publishedLabel}</time>
               </dd>
             </div>
           </dl>
 
-          <h2 className="font-display text-fg mt-10 text-2xl font-bold tracking-tight">
+          <h2 className="mt-10 font-display text-2xl font-bold tracking-tight text-fg">
             {dictionary.caseStudies.metrics}
           </h2>
 
           <div className="mt-4 overflow-x-auto">
-            <table className="border-border w-full border-collapse text-left text-sm">
+            <table className="w-full border-collapse border-border text-left text-sm">
               <caption className="sr-only">{dictionary.caseStudies.metrics}</caption>
               <thead>
-                <tr className="border-border border-b">
+                <tr className="border-b border-border">
                   <th scope="col" className="py-3 pr-4 font-semibold">
                     {dictionary.caseStudies.metrics}
                   </th>
@@ -174,12 +174,12 @@ export default async function CaseStudyPage({
               </thead>
               <tbody>
                 {study.metrics.map((metric) => (
-                  <tr key={metric.label} className="border-border border-b last:border-0">
-                    <th scope="row" className="text-muted py-3 pr-4 font-medium">
+                  <tr key={metric.label} className="border-b border-border last:border-0">
+                    <th scope="row" className="py-3 pr-4 font-medium text-muted">
                       {metric.label}
                     </th>
                     <td className="py-3 pr-4 tabular-nums">{metric.before}</td>
-                    <td className="text-fg py-3 font-semibold tabular-nums">{metric.after}</td>
+                    <td className="py-3 font-semibold tabular-nums text-fg">{metric.after}</td>
                   </tr>
                 ))}
               </tbody>
@@ -190,7 +190,7 @@ export default async function CaseStudyPage({
             <MDXRemote source={study.body} components={mdxComponents} />
           </div>
 
-          <p className="border-border text-muted mt-10 border-t pt-6 text-sm leading-6">
+          <p className="mt-10 border-t border-border pt-6 text-sm leading-6 text-muted">
             {dictionary.caseStudies.fictional}
           </p>
 

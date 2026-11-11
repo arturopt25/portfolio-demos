@@ -5,7 +5,7 @@ export function BrandMark({ name = brand.name }: { name?: string }) {
     <span className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className="bg-primary text-primary-fg flex h-8 w-8 items-center justify-center rounded-md"
+        className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-fg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -27,17 +27,17 @@ export function Cta({
 
   return (
     <Section className={className}>
-      <div className="border-border bg-surface shadow-card rounded-xl border px-6 py-12 text-center sm:px-12">
+      <div className="rounded-xl border border-border bg-surface px-6 py-12 text-center shadow-card sm:px-12">
         {eyebrow ? (
-          <p className="text-primary mb-3 text-xs font-semibold tracking-[0.18em] uppercase">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             {eyebrow}
           </p>
         ) : null}
         {anchor}
-        <h2 className="font-display text-fg mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="mx-auto max-w-2xl font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
           {title}
         </h2>
-        <p className="text-muted mx-auto mt-4 max-w-2xl text-base leading-7">{description}</p>
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted">{description}</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <LinkButton href={primaryCta.href} size="lg" data-analytics={primaryCta.analyticsEvent}>
             {primaryCta.label}

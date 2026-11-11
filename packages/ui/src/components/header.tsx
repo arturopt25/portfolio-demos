@@ -57,14 +57,14 @@ export function Header({
   return (
     <header
       className={cn(
-        "border-border/80 bg-bg/90 sticky top-0 z-40 border-b backdrop-blur",
+        "sticky top-0 z-40 border-b border-border/80 bg-bg/90 backdrop-blur",
         className,
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
         <a
           href={brandHref}
-          className="text-fg focus-visible:ring-ring flex items-center gap-2 rounded-sm text-base font-bold tracking-tight focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="flex items-center gap-2 rounded-sm text-base font-bold tracking-tight text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           {brand}
         </a>
@@ -79,7 +79,7 @@ export function Header({
               href={link.href}
               aria-current={link.current ? "page" : undefined}
               className={cn(
-                "text-muted hover:bg-surface hover:text-fg focus-visible:ring-ring rounded-sm px-3 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none",
+                "rounded-sm px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 link.current && "text-fg",
               )}
             >
@@ -99,7 +99,7 @@ export function Header({
 
         <button
           type="button"
-          className="border-border text-fg hover:bg-surface focus-visible:ring-ring inline-flex h-10 w-10 items-center justify-center rounded-md border transition-colors focus-visible:ring-2 focus-visible:outline-none md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-fg transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden"
           aria-expanded={open}
           aria-controls="mobile-navigation"
           onClick={() => setOpen((value) => !value)}
@@ -112,7 +112,7 @@ export function Header({
       </Container>
 
       {open ? (
-        <div id="mobile-navigation" className="border-border bg-bg border-t md:hidden">
+        <div id="mobile-navigation" className="border-t border-border bg-bg md:hidden">
           <Container className="space-y-4 py-4">
             <nav
               aria-label={labels?.navigation ?? "Primary navigation"}
@@ -125,7 +125,7 @@ export function Header({
                   aria-current={link.current ? "page" : undefined}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "text-muted hover:bg-surface hover:text-fg focus-visible:ring-ring rounded-sm px-3 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none",
+                    "rounded-sm px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                     link.current && "bg-surface text-fg",
                   )}
                 >
@@ -134,7 +134,7 @@ export function Header({
               ))}
             </nav>
 
-            <div className="border-border flex flex-col gap-2 border-t pt-4">
+            <div className="flex flex-col gap-2 border-t border-border pt-4">
               {actions}
               {cta ? (
                 <LinkButton

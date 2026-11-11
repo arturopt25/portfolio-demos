@@ -19,34 +19,34 @@ export default function TermsPage() {
   return (
     <main>
       <Section>
-        <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
           Demo legal page
         </p>
-        <h1 className="font-display text-fg mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
           Terms of use
         </h1>
-        <p className="text-muted mt-4 max-w-2xl text-base leading-7">
+        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           Casefern is a fictional demo brand. These terms are illustrative only and do not create a
           real agreement or commercial relationship.
         </p>
 
-        <div className="text-muted mt-10 max-w-2xl space-y-6 text-sm leading-7">
+        <div className="mt-10 max-w-2xl space-y-6 text-sm leading-7 text-muted">
           <section>
-            <h2 className="text-fg text-base font-semibold">Demo content</h2>
+            <h2 className="text-base font-semibold text-fg">Demo content</h2>
             <p className="mt-2">
               All names, pricing, testimonials, and product claims on this site are fictional and
               intended for portfolio demonstration.
             </p>
           </section>
           <section>
-            <h2 className="text-fg text-base font-semibold">No service provided</h2>
+            <h2 className="text-base font-semibold text-fg">No service provided</h2>
             <p className="mt-2">
               This demo does not provide a real SaaS product, support service, or commercial
               offering.
             </p>
           </section>
           <section>
-            <h2 className="text-fg text-base font-semibold">Use of the demo</h2>
+            <h2 className="text-base font-semibold text-fg">Use of the demo</h2>
             <p className="mt-2">
               You may inspect the demo for evaluation purposes. Do not present it as a real Casefern
               product or imply an affiliation with a real company.
@@ -56,7 +56,7 @@ export default function TermsPage() {
 
         <Link
           href="/"
-          className="text-primary focus-visible:ring-ring mt-10 inline-block rounded-sm text-sm font-semibold underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+          className="mt-10 inline-block rounded-sm text-sm font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           Back to Casefern
         </Link>

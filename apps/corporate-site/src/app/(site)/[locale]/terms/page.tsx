@@ -47,7 +47,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <Section className="pt-6 pb-0">
+      <Section className="pb-0 pt-6">
         <Breadcrumbs
           label={dictionary.a11y.breadcrumb}
           items={[

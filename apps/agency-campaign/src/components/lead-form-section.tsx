@@ -67,22 +67,22 @@ export function LeadFormSection() {
             description="A short brief is enough. This demo uses a mock form adapter, so nothing is transmitted, stored, or sent to a third party."
           />
 
-          <dl className="text-muted mt-8 space-y-4 text-sm">
+          <dl className="mt-8 space-y-4 text-sm text-muted">
             {contactDetails.map((detail) => (
               <div key={detail.label}>
-                <dt className="text-fg font-semibold">{detail.label}</dt>
+                <dt className="font-semibold text-fg">{detail.label}</dt>
                 <dd className="mt-1">{detail.value}</dd>
               </div>
             ))}
           </dl>
 
-          <p className="border-border text-muted mt-8 border-t pt-5 text-xs leading-6">
+          <p className="mt-8 border-t border-border pt-5 text-xs leading-6 text-muted">
             Fictional demo. No real client, campaign, or personal data is collected.
           </p>
         </div>
 
         <div
-          className="border-border bg-elevated shadow-card rounded-xl border p-6 sm:p-8"
+          className="rounded-xl border border-border bg-elevated p-6 shadow-card sm:p-8"
           onFocusCapture={handleFormStart}
           onChangeCapture={handleFormStart}
         >

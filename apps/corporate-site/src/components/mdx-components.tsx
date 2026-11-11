@@ -7,39 +7,39 @@ import type { ComponentPropsWithoutRef } from "react";
 export const mdxComponents = {
   h2: (props: ComponentPropsWithoutRef<"h2">) => (
     <h2
-      className="font-display text-fg mt-12 text-2xl font-bold tracking-tight first:mt-0"
+      className="mt-12 font-display text-2xl font-bold tracking-tight text-fg first:mt-0"
       {...props}
     />
   ),
   h3: (props: ComponentPropsWithoutRef<"h3">) => (
-    <h3 className="text-fg mt-8 text-lg font-semibold" {...props} />
+    <h3 className="mt-8 text-lg font-semibold text-fg" {...props} />
   ),
   p: (props: ComponentPropsWithoutRef<"p">) => (
-    <p className="text-muted mt-4 text-base leading-7" {...props} />
+    <p className="mt-4 text-base leading-7 text-muted" {...props} />
   ),
   ul: (props: ComponentPropsWithoutRef<"ul">) => (
-    <ul className="text-muted mt-4 list-disc space-y-2 pl-6 text-base leading-7" {...props} />
+    <ul className="mt-4 list-disc space-y-2 pl-6 text-base leading-7 text-muted" {...props} />
   ),
   ol: (props: ComponentPropsWithoutRef<"ol">) => (
-    <ol className="text-muted mt-4 list-decimal space-y-2 pl-6 text-base leading-7" {...props} />
+    <ol className="mt-4 list-decimal space-y-2 pl-6 text-base leading-7 text-muted" {...props} />
   ),
   li: (props: ComponentPropsWithoutRef<"li">) => <li className="pl-1" {...props} />,
   strong: (props: ComponentPropsWithoutRef<"strong">) => (
-    <strong className="text-fg font-semibold" {...props} />
+    <strong className="font-semibold text-fg" {...props} />
   ),
   a: (props: ComponentPropsWithoutRef<"a">) => (
     <a
-      className="text-primary focus-visible:ring-ring rounded-sm font-medium underline underline-offset-4 focus-visible:ring-2 focus-visible:outline-none"
+      className="rounded-sm font-medium text-primary underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       {...props}
     />
   ),
   blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote
-      className="border-primary text-fg mt-6 border-l-4 pl-5 text-base leading-7 italic"
+      className="mt-6 border-l-4 border-primary pl-5 text-base italic leading-7 text-fg"
       {...props}
     />
   ),
   hr: (props: ComponentPropsWithoutRef<"hr">) => (
-    <hr className="border-border my-10 border-t" {...props} />
+    <hr className="my-10 border-t border-border" {...props} />
   ),
 };

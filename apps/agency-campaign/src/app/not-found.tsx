@@ -22,11 +22,11 @@ export default function NotFound() {
       <main id="main">
         <Section>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">404</p>
-            <h1 className="font-display text-fg mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">404</p>
+            <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-fg sm:text-5xl">
               This page does not exist.
             </h1>
-            <p className="text-muted mt-5 text-base leading-7">
+            <p className="mt-5 text-base leading-7 text-muted">
               The link may be wrong, or the page may have moved. This is a static demo, so unknown
               routes fall back to this 404 page.
             </p>

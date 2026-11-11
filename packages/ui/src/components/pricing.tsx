@@ -65,14 +65,14 @@ export function Pricing({
         <div
           role="group"
           aria-label="Billing period"
-          className="border-border bg-surface inline-flex self-start rounded-lg border p-1"
+          className="inline-flex self-start rounded-lg border border-border bg-surface p-1"
         >
           <button
             type="button"
             aria-pressed={billing === "monthly"}
             onClick={() => changeBilling("monthly")}
             className={cn(
-              "focus-visible:ring-ring rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none",
+              "rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               billing === "monthly" ? "bg-elevated text-fg shadow-sm" : "text-muted hover:text-fg",
             )}
           >
@@ -83,7 +83,7 @@ export function Pricing({
             aria-pressed={billing === "annual"}
             onClick={() => changeBilling("annual")}
             className={cn(
-              "focus-visible:ring-ring rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none",
+              "rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               billing === "annual" ? "bg-elevated text-fg shadow-sm" : "text-muted hover:text-fg",
             )}
           >
@@ -100,36 +100,36 @@ export function Pricing({
             <li key={plan.name}>
               <div
                 className={cn(
-                  "bg-elevated shadow-card flex h-full flex-col rounded-xl border p-6",
-                  plan.highlighted ? "border-primary ring-primary ring-1" : "border-border",
+                  "flex h-full flex-col rounded-xl border bg-elevated p-6 shadow-card",
+                  plan.highlighted ? "border-primary ring-1 ring-primary" : "border-border",
                 )}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-fg text-lg font-semibold">{plan.name}</h3>
-                    <p className="text-muted mt-1 text-sm leading-6">{plan.description}</p>
+                    <h3 className="text-lg font-semibold text-fg">{plan.name}</h3>
+                    <p className="mt-1 text-sm leading-6 text-muted">{plan.description}</p>
                   </div>
                   {plan.badge ? (
-                    <span className="bg-primary-soft text-primary rounded-full px-3 py-1 text-xs font-semibold">
+                    <span className="rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary">
                       {plan.badge}
                     </span>
                   ) : null}
                 </div>
 
                 <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-fg text-4xl font-bold tracking-tight tabular-nums">
+                  <span className="text-4xl font-bold tabular-nums tracking-tight text-fg">
                     ${price}
                   </span>
-                  <span className="text-muted text-sm font-medium">{perMonthLabel}</span>
+                  <span className="text-sm font-medium text-muted">{perMonthLabel}</span>
                 </div>
-                <p className="text-muted mt-1 min-h-5 text-xs">
+                <p className="mt-1 min-h-5 text-xs text-muted">
                   {billing === "annual" ? annualNote : "\u00a0"}
                 </p>
 
-                <ul className="border-border mt-6 flex-1 space-y-3 border-t pt-6">
+                <ul className="mt-6 flex-1 space-y-3 border-t border-border pt-6">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="text-muted flex gap-3 text-sm leading-6">
-                      <CheckIcon className="text-success mt-0.5 h-4 w-4 shrink-0" />
+                    <li key={feature} className="flex gap-3 text-sm leading-6 text-muted">
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-success" />
                       <span>{feature}</span>
                     </li>
                   ))}

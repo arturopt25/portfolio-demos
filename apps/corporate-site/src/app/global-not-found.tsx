@@ -36,16 +36,16 @@ export default function GlobalNotFound() {
         >
           <BrandMark name={brand.name} />
 
-          <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">404</p>
-          <h1 className="font-display text-fg text-4xl font-bold tracking-tight sm:text-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">404</p>
+          <h1 className="font-display text-4xl font-bold tracking-tight text-fg sm:text-5xl">
             {dictionary.notFound.title}
           </h1>
-          <p className="text-muted text-base leading-7">{dictionary.notFound.description}</p>
+          <p className="text-base leading-7 text-muted">{dictionary.notFound.description}</p>
 
           <div className="mt-2 flex flex-wrap gap-3">
             <a
               href="/en/"
-              className="bg-primary text-primary-fg hover:bg-primary-hover focus-visible:ring-ring inline-flex h-11 items-center justify-center rounded-md px-5 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-fg transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {dictionary.notFound.back}
             </a>
@@ -53,7 +53,7 @@ export default function GlobalNotFound() {
               href="/es/"
               hrefLang="es"
               lang="es"
-              className="border-border bg-elevated text-fg hover:bg-surface focus-visible:ring-ring inline-flex h-11 items-center justify-center rounded-md border px-5 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-elevated px-5 text-sm font-semibold text-fg transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {dictionary.language.es}
             </a>

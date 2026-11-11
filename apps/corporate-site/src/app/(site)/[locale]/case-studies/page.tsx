@@ -48,7 +48,7 @@ export default async function CaseStudiesPage({ params }: { params: Promise<{ lo
 
   return (
     <>
-      <Section className="pt-6 pb-0">
+      <Section className="pb-0 pt-6">
         <Breadcrumbs
           label={dictionary.a11y.breadcrumb}
           items={[

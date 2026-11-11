@@ -47,7 +47,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <Section className="pt-6 pb-0">
+      <Section className="pb-0 pt-6">
         <Breadcrumbs
           label={dictionary.a11y.breadcrumb}
           items={[
@@ -72,18 +72,18 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div>
-            <h2 className="font-display text-fg text-2xl font-bold tracking-tight sm:text-3xl">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
               {dictionary.contact.detailsTitle}
             </h2>
             <dl className="mt-8 space-y-5 text-sm">
               {page.details.map((detail) => (
                 <div key={detail.label}>
-                  <dt className="text-fg font-semibold">{detail.label}</dt>
-                  <dd className="text-muted mt-1 leading-6">
+                  <dt className="font-semibold text-fg">{detail.label}</dt>
+                  <dd className="mt-1 leading-6 text-muted">
                     {detail.href ? (
                       <a
                         href={detail.href}
-                        className="hover:text-fg focus-visible:ring-ring rounded-sm underline-offset-4 transition-colors hover:underline focus-visible:ring-2 focus-visible:outline-none"
+                        className="rounded-sm underline-offset-4 transition-colors hover:text-fg hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       >
                         {detail.value}
                       </a>
@@ -96,11 +96,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             </dl>
           </div>
 
-          <div className="border-border bg-elevated shadow-card rounded-xl border p-6 sm:p-8">
-            <h2 className="font-display text-fg text-2xl font-bold tracking-tight">
+          <div className="rounded-xl border border-border bg-elevated p-6 shadow-card sm:p-8">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-fg">
               {page.form.title}
             </h2>
-            <p className="text-muted mt-2 text-sm leading-6">{page.form.description}</p>
+            <p className="mt-2 text-sm leading-6 text-muted">{page.form.description}</p>
             <div className="mt-6">
               <ContactFormSection
                 locale={locale}

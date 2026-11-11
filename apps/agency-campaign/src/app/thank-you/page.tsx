@@ -25,24 +25,24 @@ export default function ThankYouPage() {
       <main id="main">
         <Section>
           <div className="mx-auto max-w-2xl text-center">
-            <span className="bg-primary-soft text-primary mx-auto flex h-12 w-12 items-center justify-center rounded-full">
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-soft text-primary">
               <CheckIcon className="h-6 w-6" />
             </span>
 
-            <p className="text-primary mt-6 text-xs font-semibold tracking-[0.18em] uppercase">
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               Demo confirmation
             </p>
-            <h1 className="font-display text-fg mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-fg sm:text-5xl">
               Your request is in.
             </h1>
-            <p className="text-muted mt-5 text-base leading-7">
+            <p className="mt-5 text-base leading-7 text-muted">
               This is a fictional confirmation page. The form used a mock adapter, so nothing was
               transmitted, stored, or sent to a third party.
             </p>
 
-            <div className="border-border bg-surface mt-8 rounded-xl border p-6 text-left">
-              <h2 className="text-fg text-sm font-semibold">What this page demonstrates</h2>
-              <ul className="text-muted mt-3 space-y-2 text-sm leading-6">
+            <div className="mt-8 rounded-xl border border-border bg-surface p-6 text-left">
+              <h2 className="text-sm font-semibold text-fg">What this page demonstrates</h2>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
                 <li>The lead form validates and shows a success state before navigating.</li>
                 <li>The redirect is client-side and carries no personal data in the URL.</li>
                 <li>

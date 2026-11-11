@@ -18,7 +18,7 @@ export function LanguageSwitcher({ locale, labels }: LanguageSwitcherProps) {
   return (
     <nav
       aria-label={labels.label}
-      className="border-border bg-elevated inline-flex items-center rounded-md border p-0.5"
+      className="inline-flex items-center rounded-md border border-border bg-elevated p-0.5"
     >
       {locales.map((target) => {
         const isCurrent = target === locale;
@@ -32,7 +32,7 @@ export function LanguageSwitcher({ locale, labels }: LanguageSwitcherProps) {
             aria-current={isCurrent ? "true" : undefined}
             aria-label={`${labels.switchTo} ${labels[target]}`}
             className={cn(
-              "focus-visible:ring-ring rounded-sm px-2 py-1 text-xs font-semibold tracking-wide uppercase transition-colors focus-visible:ring-2 focus-visible:outline-none",
+              "rounded-sm px-2 py-1 text-xs font-semibold uppercase tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               isCurrent ? "bg-primary text-primary-fg" : "text-muted hover:text-fg",
             )}
           >

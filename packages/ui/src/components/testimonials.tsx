@@ -33,22 +33,22 @@ export function Testimonials({
       <ul className="mt-10 grid gap-5 sm:mt-14 md:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <li key={`${item.name}-${item.role}`}>
-            <figure className="border-border bg-elevated shadow-card flex h-full flex-col rounded-lg border p-6">
-              <blockquote className="text-fg flex-1 text-sm leading-7">
+            <figure className="flex h-full flex-col rounded-lg border border-border bg-elevated p-6 shadow-card">
+              <blockquote className="flex-1 text-sm leading-7 text-fg">
                 &ldquo;{item.quote}&rdquo;
               </blockquote>
-              <figcaption className="border-border mt-6 flex items-center gap-3 border-t pt-4">
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
                 {item.avatar ?? (
                   <span
                     aria-hidden="true"
-                    className="bg-primary-soft text-primary flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-soft text-sm font-bold text-primary"
                   >
                     {item.name.charAt(0)}
                   </span>
                 )}
                 <span>
-                  <span className="text-fg block text-sm font-semibold">{item.name}</span>
-                  <span className="text-muted block text-xs">{item.role}</span>
+                  <span className="block text-sm font-semibold text-fg">{item.name}</span>
+                  <span className="block text-xs text-muted">{item.role}</span>
                 </span>
               </figcaption>
             </figure>

@@ -4,16 +4,16 @@ import { offer, sectionIds, stats, steps } from "@/content/campaign";
 
 export function StatsStrip() {
   return (
-    <section className="bg-surface border-border border-y py-12 sm:py-14">
+    <section className="border-y border-border bg-surface py-12 sm:py-14">
       <Container>
         <span id={sectionIds.proof} className="block h-0 scroll-mt-[4.5rem]" aria-hidden="true" />
         <dl className="grid grid-cols-2 gap-6 sm:grid-cols-4">
           {stats.map((item) => (
             <div key={item.label}>
-              <dt className="text-muted text-xs font-semibold tracking-[0.14em] uppercase">
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 {item.label}
               </dt>
-              <dd className="text-fg mt-2 text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
+              <dd className="mt-2 text-3xl font-bold tabular-nums tracking-tight text-fg sm:text-4xl">
                 {item.value}
               </dd>
             </div>
@@ -38,13 +38,13 @@ export function HowItWorks() {
         {steps.map((step, index) => (
           <li
             key={step.title}
-            className="border-border bg-elevated shadow-card rounded-lg border p-6"
+            className="rounded-lg border border-border bg-elevated p-6 shadow-card"
           >
-            <span className="bg-primary text-primary-fg flex h-9 w-9 items-center justify-center rounded-md text-sm font-bold tabular-nums">
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-sm font-bold tabular-nums text-primary-fg">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="text-fg mt-5 text-base font-semibold">{step.title}</h3>
-            <p className="text-muted mt-2 text-sm leading-6">{step.description}</p>
+            <h3 className="mt-5 text-base font-semibold text-fg">{step.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-muted">{step.description}</p>
           </li>
         ))}
       </ol>
@@ -64,23 +64,23 @@ export function OfferTeaser() {
           />
 
           <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="text-fg text-4xl font-bold tracking-tight tabular-nums">
+            <span className="text-4xl font-bold tabular-nums tracking-tight text-fg">
               {offer.price}
             </span>
-            <span className="text-muted text-sm font-medium">{offer.priceNote}</span>
+            <span className="text-sm font-medium text-muted">{offer.priceNote}</span>
           </div>
 
-          <p className="border-border text-muted mt-6 border-t pt-5 text-xs leading-6">
+          <p className="mt-6 border-t border-border pt-5 text-xs leading-6 text-muted">
             {offer.note}
           </p>
         </div>
 
-        <div className="border-border bg-elevated shadow-card rounded-xl border p-6 sm:p-8">
-          <h3 className="text-fg text-lg font-semibold">What is included</h3>
+        <div className="rounded-xl border border-border bg-elevated p-6 shadow-card sm:p-8">
+          <h3 className="text-lg font-semibold text-fg">What is included</h3>
           <ul className="mt-5 space-y-3">
             {offer.includes.map((item) => (
-              <li key={item} className="text-muted flex gap-3 text-sm leading-6">
-                <CheckIcon className="text-success mt-0.5 h-4 w-4 shrink-0" />
+              <li key={item} className="flex gap-3 text-sm leading-6 text-muted">
+                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-success" />
                 <span>{item}</span>
               </li>
             ))}
@@ -108,10 +108,10 @@ export function ThemeShowcase() {
   ] as const;
 
   return (
-    <div className="bg-bg flex h-full w-full flex-col justify-between p-5">
+    <div className="flex h-full w-full flex-col justify-between bg-bg p-5">
       <div className="flex items-center justify-between gap-3">
-        <span className="text-fg text-sm font-semibold">Three palettes. One page.</span>
-        <span className="text-muted text-xs">?theme=dark</span>
+        <span className="text-sm font-semibold text-fg">Three palettes. One page.</span>
+        <span className="text-xs text-muted">?theme=dark</span>
       </div>
 
       <div className="mt-4 grid flex-1 grid-cols-3 gap-3">
@@ -119,25 +119,25 @@ export function ThemeShowcase() {
           <div
             key={palette.key}
             data-theme={palette.key}
-            className="border-border bg-bg flex flex-col justify-between rounded-lg border p-3"
+            className="flex flex-col justify-between rounded-lg border border-border bg-bg p-3"
           >
             <div className="space-y-2">
-              <span className="bg-primary block h-2 w-8 rounded-full" />
-              <span className="bg-fg/80 block h-1.5 w-full rounded-full" />
-              <span className="bg-muted/70 block h-1.5 w-3/4 rounded-full" />
+              <span className="block h-2 w-8 rounded-full bg-primary" />
+              <span className="block h-1.5 w-full rounded-full bg-fg/80" />
+              <span className="block h-1.5 w-3/4 rounded-full bg-muted/70" />
             </div>
 
             <div className="space-y-2">
-              <span className="bg-primary-soft text-primary flex h-6 items-center justify-center rounded text-[11px] font-semibold">
+              <span className="flex h-6 items-center justify-center rounded bg-primary-soft text-[11px] font-semibold text-primary">
                 CTA
               </span>
-              <span className="text-muted block text-[11px] font-medium">{palette.label}</span>
+              <span className="block text-[11px] font-medium text-muted">{palette.label}</span>
             </div>
           </div>
         ))}
       </div>
 
-      <p className="text-muted mt-4 text-xs leading-5">
+      <p className="mt-4 text-xs leading-5 text-muted">
         CSS variables only. Components and markup stay the same.
       </p>
     </div>
