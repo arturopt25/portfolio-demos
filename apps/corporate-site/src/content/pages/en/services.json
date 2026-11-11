@@ -1,0 +1,46 @@
+{
+  "slug": "services",
+  "seo": {
+    "title": "Services — Ferrowind Partners",
+    "description": "Fictional industrial engineering services: plant and process engineering, maintenance and reliability, and energy and emissions programs."
+  },
+  "hero": {
+    "eyebrow": "Services",
+    "title": "Engineering that survives contact with production.",
+    "description": "Three practices, scoped to the constraint in front of you. No transformation theatre and no 200-slide strategy deck."
+  },
+  "intro": {
+    "title": "No transformation theatre.",
+    "paragraphs": [
+      "Most plant problems are not mysteries. They are a constraint nobody has measured, a standard nobody owns, or a maintenance plan that assumes a crew twice the size of the real one.",
+      "We start with a short diagnostic, agree on the constraint in writing, and only then propose work. If the honest answer is that you do not need us, we say so."
+    ]
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "A four-step operating loop.",
+    "description": "Short cycles, visible assumptions, and a handover plan from day one.",
+    "steps": [
+      {
+        "title": "Diagnose",
+        "description": "Walk the line, review the data, and agree on the constraint before proposing a fix."
+      },
+      {
+        "title": "Design",
+        "description": "Turn the diagnosis into a scoped engineering plan with costs, risks, and a rollback path."
+      },
+      {
+        "title": "Implement",
+        "description": "Work alongside plant teams through commissioning, training, and the first stable production week."
+      },
+      {
+        "title": "Sustain",
+        "description": "Leave behind standards, dashboards, and a short list of the next three improvements."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Not sure which practice fits?",
+    "description": "Describe the symptom. We will tell you whether it is a process, reliability, or energy problem — or none of the above."
+  }
+}

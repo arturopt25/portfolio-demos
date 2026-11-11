@@ -1,0 +1,40 @@
+{
+  "slug": "contact",
+  "seo": {
+    "title": "Contacto — Ferrowind Partners",
+    "description": "Contacta al equipo ficticio de Ferrowind Partners. Esta demo usa un adaptador de formulario simulado, así que no se envía ni almacena nada."
+  },
+  "hero": {
+    "eyebrow": "Contacto",
+    "title": "Cuéntanos sobre la línea que no se comporta.",
+    "description": "Una descripción breve del síntoma es más útil que un informe formal. Esta demo usa un adaptador simulado; no se transmite nada."
+  },
+  "form": {
+    "title": "Inicia una conversación",
+    "description": "Cuéntanos qué está pasando, qué ya intentaron y cómo se vería un buen resultado."
+  },
+  "details": [
+    {
+      "label": "Correo",
+      "value": "hello@ferrowind.example",
+      "href": "mailto:hello@ferrowind.example"
+    },
+    {
+      "label": "Teléfono",
+      "value": "+1 555 010 2048",
+      "href": "tel:+15550102048"
+    },
+    {
+      "label": "Oficina",
+      "value": "1200 Foundry Way, Suite 400, Pittsburgh, PA 15222"
+    },
+    {
+      "label": "Horario",
+      "value": "Lun–Vie, 08:00–17:00 ET (ficticio)"
+    }
+  ],
+  "cta": {
+    "title": "¿Prefieres ver el trabajo primero?",
+    "description": "Los casos prácticos muestran cómo acotamos un proyecto y cómo es el traspaso."
+  }
+}

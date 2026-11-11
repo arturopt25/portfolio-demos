@@ -1,0 +1,98 @@
+{
+  "slug": "home",
+  "seo": {
+    "title": "Ferrowind Partners — Industrial engineering and operations consulting",
+    "description": "A fictional industrial engineering and consulting demo. Plant engineering, maintenance strategy, and energy programs for heavy industry."
+  },
+  "hero": {
+    "eyebrow": "Industrial engineering & operations consulting",
+    "title": "Make heavy industry run quieter, safer, and leaner.",
+    "description": "Ferrowind Partners helps plant teams find the constraint, fix the process, and keep the gains. A fictional demo for a B2B corporate site."
+  },
+  "clients": {
+    "title": "Trusted by fictional operators in",
+    "items": [
+      "Brackenhill Metals",
+      "Northvale Pulp",
+      "Calder Cement Works",
+      "Harborline Chemicals",
+      "Redstone Aggregates"
+    ]
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Three practices, one operating mindset.",
+    "description": "We work where engineering meets the shop floor: clear diagnostics, practical designs, and a handover your team can own."
+  },
+  "caseStudies": {
+    "eyebrow": "Selected work",
+    "title": "Three constraints, three measured fixes.",
+    "description": "Each case study is fictional and shows the before-and-after metric that justified the work."
+  },
+  "stats": [
+    {
+      "value": "28%",
+      "label": "Average reduction in unplanned downtime across fictional demo engagements"
+    },
+    {
+      "value": "120+",
+      "label": "Fictional site assessments completed"
+    },
+    {
+      "value": "14 yrs",
+      "label": "Average partner experience in heavy industry"
+    },
+    {
+      "value": "3",
+      "label": "Continents served by the fictional team"
+    }
+  ],
+  "process": {
+    "eyebrow": "How we work",
+    "title": "A four-step operating loop.",
+    "description": "Short cycles, visible assumptions, and a handover plan from day one.",
+    "steps": [
+      {
+        "title": "Diagnose",
+        "description": "Walk the line, review the data, and agree on the constraint before proposing a fix."
+      },
+      {
+        "title": "Design",
+        "description": "Turn the diagnosis into a scoped engineering plan with costs, risks, and a rollback path."
+      },
+      {
+        "title": "Implement",
+        "description": "Work alongside plant teams through commissioning, training, and the first stable production week."
+      },
+      {
+        "title": "Sustain",
+        "description": "Leave behind standards, dashboards, and a short list of the next three improvements."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "From the floor",
+    "title": "What fictional plant leaders say.",
+    "items": [
+      {
+        "quote": "They spent the first two days listening to operators. The fix was smaller and cheaper than our original plan.",
+        "name": "Marta Reyes",
+        "role": "Plant Director, Brackenhill Metals (fictional)"
+      },
+      {
+        "quote": "The handover was the useful part. Six months later, our own team is still running the new standard.",
+        "name": "Owen Hartley",
+        "role": "Maintenance Manager, Northvale Pulp (fictional)"
+      },
+      {
+        "quote": "Clear numbers, no theatre. We knew what we were buying before we signed anything.",
+        "name": "Priya Nandakumar",
+        "role": "COO, Calder Cement Works (fictional)"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Bring us the constraint you keep arguing about.",
+    "description": "A 45-minute call is usually enough to decide whether a site visit is worth it."
+  }
+}

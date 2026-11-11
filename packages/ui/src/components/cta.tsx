@@ -21,14 +21,19 @@ export function Cta({
   secondaryCta,
   className,
 }: CtaProps) {
+  const anchor = id ? (
+    <span id={id} className="block h-0 scroll-mt-[5.5rem]" aria-hidden="true" />
+  ) : null;
+
   return (
-    <Section id={id} className={className}>
+    <Section className={className}>
       <div className="border-border bg-surface shadow-card rounded-xl border px-6 py-12 text-center sm:px-12">
         {eyebrow ? (
           <p className="text-primary mb-3 text-xs font-semibold tracking-[0.18em] uppercase">
             {eyebrow}
           </p>
         ) : null}
+        {anchor}
         <h2 className="font-display text-fg mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
           {title}
         </h2>

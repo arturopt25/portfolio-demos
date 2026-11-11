@@ -61,3 +61,40 @@ export function SparkIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function FactoryIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <path d="M3 21h18M4 21V10l5 3V10l5 3V7l6 4v10" />
+      <path d="M7 21v-3M12 21v-3M17 21v-3" />
+    </svg>
+  );
+}
+
+export function GaugeIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <path d="M20.5 18a9 9 0 1 0-17 0" />
+      <path d="M12 14l4-4" />
+      <path d="M12 18h.01" />
+    </svg>
+  );
+}
+
+export function LeafIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <path d="M4 20c8 0 14-6 14-14-8 0-14 6-14 14Z" />
+      <path d="M4 20 14 10" />
+    </svg>
+  );
+}
+
+export function CompassIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m15.5 8.5-2 7-5 2 2-7 5-2Z" />
+    </svg>
+  );
+}

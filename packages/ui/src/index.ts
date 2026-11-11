@@ -31,6 +31,10 @@ export {
   CheckIcon,
   ChevronDownIcon,
   CloseIcon,
+  CompassIcon,
+  FactoryIcon,
+  GaugeIcon,
+  LeafIcon,
   MenuIcon,
   SparkIcon,
 } from "./components/icons";

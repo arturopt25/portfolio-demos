@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "plant-engineering",
+    "name": "Plant & process engineering",
+    "summary": "Find the real constraint and fix it without a capital project.",
+    "icon": "factory",
+    "description": "We map material and information flow, measure where the line actually loses time, and design the smallest change that recovers capacity. The work stays grounded in the equipment you already run.",
+    "outcomes": [
+      "Capacity and debottlenecking studies with a ranked action list",
+      "Line balancing and changeover reduction",
+      "Process documentation your operators will actually use"
+    ]
+  },
+  {
+    "slug": "maintenance-strategy",
+    "name": "Maintenance & reliability",
+    "summary": "Move from reactive repairs to a maintenance plan you can defend.",
+    "icon": "gauge",
+    "description": "We review asset criticality, failure history, and spare-parts reality, then build a preventive plan that fits the crew you have. The goal is fewer surprises, not a binder that never leaves the office.",
+    "outcomes": [
+      "Asset criticality and failure-mode review",
+      "Preventive and condition-based maintenance design",
+      "Spare-parts and shutdown planning"
+    ]
+  },
+  {
+    "slug": "energy-programs",
+    "name": "Energy & emissions programs",
+    "summary": "Cut energy intensity with projects that survive the payback test.",
+    "icon": "leaf",
+    "description": "We baseline energy use by line and shift, find recoverable heat and idle load, and sequence projects by payback and operational risk. Every recommendation includes a measurement plan.",
+    "outcomes": [
+      "Energy and emissions baseline by process area",
+      "Heat recovery and electrification screening",
+      "Measurement and verification plan for each project"
+    ]
+  }
+]

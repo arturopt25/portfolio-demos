@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   distDir: "dist",
   trailingSlash: true,
   agentRules: false,
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     unoptimized: true,
   },

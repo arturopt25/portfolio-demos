@@ -16,7 +16,7 @@ Cloudflare Pages. There is no server runtime, no API route, and no paid service.
 ```text
 apps/
   saas-landing/      Casefern — B2B SaaS landing demo
-  corporate-site/    Nexova Systems — corporate site (pending)
+  corporate-site/    Ferrowind Partners — industrial engineering demo
   agency-campaign/   Catalyst Studio — agency campaign (pending)
 packages/
   config/            Shared TypeScript, ESLint, Prettier, Tailwind preset, tokens
@@ -59,11 +59,11 @@ All apps use `output: "export"`, `distDir: "dist"`, `trailingSlash: true`, and
 
 ## Demo status
 
-| Demo                   | Brand           | Status      | Notes                                                          |
-| ---------------------- | --------------- | ----------- | -------------------------------------------------------------- |
-| `apps/saas-landing`    | Casefern        | **Done**    | Hero A/B, pricing, FAQ, lead form, metadata, JSON-LD, OG image |
-| `apps/corporate-site`  | Nexova Systems  | **Pending** | 4 pages, EN/ES i18n, MDX content adapter                       |
-| `apps/agency-campaign` | Catalyst Studio | **Pending** | Token-driven white-label theming, UTM capture, thank-you page  |
+| Demo                   | Brand              | Status      | Notes                                                              |
+| ---------------------- | ------------------ | ----------- | ------------------------------------------------------------------ |
+| `apps/saas-landing`    | Casefern           | **Done**    | Hero A/B, pricing, FAQ, lead form, metadata, JSON-LD, OG image     |
+| `apps/corporate-site`  | Ferrowind Partners | **Done**    | EN/ES routes, MDX content adapter, case studies, sitemap, hreflang |
+| `apps/agency-campaign` | Catalyst Studio    | **Pending** | Token-driven white-label theming, UTM capture, thank-you page      |
 
 ## Quality gates
 
@@ -78,8 +78,8 @@ All apps use `output: "export"`, `distDir: "dist"`, `trailingSlash: true`, and
 ## Fictional brands
 
 - **Casefern** — fictional B2B SaaS support product
-- **Nexova Systems** — fictional infrastructure consultancy
-- **Catalyst Studio** — fictional brand/launch agency
+- **Ferrowind Partners** — fictional industrial engineering and consulting company
+- **Catalyst Studio** — fictional brand/launch agency (Phase 4)
 
 Do not present these demos as real products or imply affiliation with a real
 company.

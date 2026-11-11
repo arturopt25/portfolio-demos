@@ -1,0 +1,40 @@
+{
+  "slug": "terms",
+  "seo": {
+    "title": "Terms of use — Ferrowind Partners",
+    "description": "Fictional terms of use for the Ferrowind Partners portfolio demo. No real commercial services are offered."
+  },
+  "title": "Terms of use",
+  "updated": "January 2026",
+  "intro": "These terms are part of a fictional portfolio demo. Ferrowind Partners is not a real company, and nothing on this site is a commercial offer.",
+  "sections": [
+    {
+      "heading": "Demo purpose",
+      "paragraphs": [
+        "This site exists to demonstrate a static corporate website built with the Folio starter kit. Services, pricing, clients, case studies, and testimonials are invented for that purpose.",
+        "Do not present this demo as a real engineering firm or imply that it can provide professional services."
+      ]
+    },
+    {
+      "heading": "No professional advice",
+      "paragraphs": [
+        "Engineering descriptions, metrics, and recommendations are illustrative. They are not a substitute for a site-specific assessment by a licensed professional.",
+        "Any real industrial change should be reviewed against local safety, environmental, and engineering requirements."
+      ]
+    },
+    {
+      "heading": "Content and trademarks",
+      "paragraphs": [
+        "Demo copy and illustrations were created for this portfolio. No real company logos or trademarks are used.",
+        "Client names such as Brackenhill Metals, Northvale Pulp, and Calder Cement Works are fictional."
+      ]
+    },
+    {
+      "heading": "Acceptable use",
+      "paragraphs": [
+        "You may browse, test, and reference this demo for learning. You may not represent it as a live commercial site or reuse the fictional brand as your own.",
+        "The demo is provided as-is, without warranties of any kind."
+      ]
+    }
+  ]
+}

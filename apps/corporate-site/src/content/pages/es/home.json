@@ -1,0 +1,98 @@
+{
+  "slug": "home",
+  "seo": {
+    "title": "Ferrowind Partners — Ingeniería industrial y consultoría de operaciones",
+    "description": "Demo ficticio de ingeniería industrial y consultoría. Ingeniería de planta, estrategia de mantenimiento y programas de energía para industria pesada."
+  },
+  "hero": {
+    "eyebrow": "Ingeniería industrial y consultoría de operaciones",
+    "title": "Haz que la industria pesada opere más silenciosa, segura y eficiente.",
+    "description": "Ferrowind Partners ayuda a los equipos de planta a encontrar la restricción, corregir el proceso y sostener las mejoras. Una demo ficticia de sitio corporativo B2B."
+  },
+  "clients": {
+    "title": "Con la confianza de operadores ficticios en",
+    "items": [
+      "Brackenhill Metals",
+      "Northvale Pulp",
+      "Calder Cement Works",
+      "Harborline Chemicals",
+      "Redstone Aggregates"
+    ]
+  },
+  "services": {
+    "eyebrow": "Qué hacemos",
+    "title": "Tres prácticas, una misma mentalidad operativa.",
+    "description": "Trabajamos donde la ingeniería se encuentra con la planta: diagnósticos claros, diseños prácticos y un traspaso que tu equipo puede asumir."
+  },
+  "caseStudies": {
+    "eyebrow": "Trabajo seleccionado",
+    "title": "Tres restricciones, tres correcciones medidas.",
+    "description": "Cada caso práctico es ficticio y muestra la métrica de antes y después que justificó el trabajo."
+  },
+  "stats": [
+    {
+      "value": "28%",
+      "label": "Reducción media de paradas no planificadas en proyectos ficticios de la demo"
+    },
+    {
+      "value": "120+",
+      "label": "Evaluaciones de planta ficticias completadas"
+    },
+    {
+      "value": "14 años",
+      "label": "Experiencia media de los socios en industria pesada"
+    },
+    {
+      "value": "3",
+      "label": "Continentes atendidos por el equipo ficticio"
+    }
+  ],
+  "process": {
+    "eyebrow": "Cómo trabajamos",
+    "title": "Un ciclo operativo de cuatro pasos.",
+    "description": "Ciclos cortos, supuestos visibles y un plan de traspaso desde el primer día.",
+    "steps": [
+      {
+        "title": "Diagnosticar",
+        "description": "Recorremos la línea, revisamos los datos y acordamos la restricción antes de proponer una solución."
+      },
+      {
+        "title": "Diseñar",
+        "description": "Convertimos el diagnóstico en un plan de ingeniería acotado, con costos, riesgos y una ruta de reversión."
+      },
+      {
+        "title": "Implementar",
+        "description": "Trabajamos junto a los equipos de planta en la puesta en marcha, la capacitación y la primera semana estable."
+      },
+      {
+        "title": "Sostener",
+        "description": "Dejamos estándares, tableros y una lista corta con las siguientes tres mejoras."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Desde la planta",
+    "title": "Lo que dicen líderes de planta ficticios.",
+    "items": [
+      {
+        "quote": "Pasaron los primeros dos días escuchando a los operadores. La solución fue más pequeña y barata que nuestro plan original.",
+        "name": "Marta Reyes",
+        "role": "Directora de planta, Brackenhill Metals (ficticio)"
+      },
+      {
+        "quote": "El traspaso fue lo más valioso. Seis meses después, nuestro propio equipo sigue ejecutando el nuevo estándar.",
+        "name": "Owen Hartley",
+        "role": "Gerente de mantenimiento, Northvale Pulp (ficticio)"
+      },
+      {
+        "quote": "Números claros, sin teatro. Sabíamos qué estábamos comprando antes de firmar.",
+        "name": "Priya Nandakumar",
+        "role": "COO, Calder Cement Works (ficticio)"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Tráenos la restricción de la que todos discuten.",
+    "description": "Una llamada de 45 minutos suele bastar para decidir si vale la pena una visita a planta."
+  }
+}

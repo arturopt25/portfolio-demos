@@ -1,0 +1,39 @@
+{
+  "slug": "privacy",
+  "seo": {
+    "title": "Aviso de privacidad — Ferrowind Partners",
+    "description": "Aviso de privacidad ficticio para la demo de portafolio de Ferrowind Partners. El formulario usa un adaptador simulado y no envía nada."
+  },
+  "title": "Aviso de privacidad",
+  "updated": "Enero de 2026",
+  "intro": "Este es un aviso de privacidad ficticio para una demo de portafolio. Está escrito para parecer realista, pero Ferrowind Partners no es una empresa real y este sitio no opera un servicio en producción.",
+  "sections": [
+    {
+      "heading": "Qué recopila esta demo",
+      "paragraphs": [
+        "El formulario de contacto está conectado a un adaptador simulado. El nombre, el correo, la empresa y el mensaje permanecen en la memoria del navegador el tiempo suficiente para mostrar el estado de éxito. No se transmiten, registran ni almacenan.",
+        "La analítica es un stub sin operación. Los eventos solo se pasan a un adaptador después de que otorgas consentimiento, y el adaptador por defecto los descarta."
+      ]
+    },
+    {
+      "heading": "Cookies y almacenamiento local",
+      "paragraphs": [
+        "El banner de cookies guarda tu elección en el almacenamiento local para no volver a preguntar. No se instalan cookies publicitarias ni de seguimiento.",
+        "Puedes borrar la elección guardada en cualquier momento desde la configuración de datos del sitio en tu navegador."
+      ]
+    },
+    {
+      "heading": "Terceros",
+      "paragraphs": [
+        "Esta demo no tiene conectados servicios de analítica, publicidad ni CRM de terceros. Las fuentes se alojan localmente en el build mediante next/font.",
+        "Si más adelante esta demo se conecta a un backend o CMS real, este aviso debe reemplazarse antes del lanzamiento."
+      ]
+    },
+    {
+      "heading": "Contacto",
+      "paragraphs": [
+        "Las preguntas sobre este aviso ficticio pueden enviarse a hello@ferrowind.example. La dirección está reservada para ejemplos y no recibe correo."
+      ]
+    }
+  ]
+}

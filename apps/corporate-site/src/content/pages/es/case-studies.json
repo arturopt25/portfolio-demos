@@ -1,0 +1,16 @@
+{
+  "slug": "case-studies",
+  "seo": {
+    "title": "Casos prácticos — Ferrowind Partners",
+    "description": "Casos prácticos ficticios de ingeniería industrial con métricas de antes y después para operaciones de fundición, pulpa y cemento."
+  },
+  "hero": {
+    "eyebrow": "Casos prácticos",
+    "title": "Cambios pequeños, medidos con honestidad.",
+    "description": "Tres proyectos ficticios, cada uno con una vista de antes y después de la métrica que importaba. Los nombres de clientes y resultados son inventados."
+  },
+  "cta": {
+    "title": "¿Quieres la versión con tus números?",
+    "description": "Trae una línea de producción y una métrica en la que no confías. Empezamos por ahí."
+  }
+}

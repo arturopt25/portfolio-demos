@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "defaultTitle": "Ferrowind Partners — Industrial engineering and operations consulting",
+    "defaultDescription": "A fictional B2B industrial engineering and consulting demo for heavy industry.",
+    "ogNote": "Fictional demo",
+    "ogTags": "Plant engineering · Reliability · Energy",
+    "ogTitle": "Industrial engineering, measured honestly."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "caseStudies": "Case studies",
+    "contact": "Contact"
+  },
+  "header": {
+    "cta": "Book a discovery call",
+    "navigation": "Primary navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "es": "Español",
+    "switchTo": "Switch language to"
+  },
+  "footer": {
+    "description": "A fictional industrial engineering and operations consultancy for heavy industry. Built as a portfolio demo.",
+    "legal": "Fictional demo content. Ferrowind Partners is not a real company and has no affiliation with any real operator.",
+    "columns": {
+      "company": "Company",
+      "explore": "Explore",
+      "legal": "Legal"
+    },
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "common": {
+    "bookCall": "Book a discovery call",
+    "viewCaseStudies": "View case studies",
+    "exploreServices": "Explore services",
+    "readCaseStudy": "Read case study",
+    "allCaseStudies": "All case studies",
+    "home": "Home"
+  },
+  "caseStudies": {
+    "eyebrow": "Case studies",
+    "before": "Before",
+    "after": "After",
+    "metrics": "Before and after",
+    "sector": "Sector",
+    "year": "Year",
+    "client": "Client",
+    "published": "Published",
+    "fictional": "Fictional case study for portfolio purposes. Client names, sites, and results are invented.",
+    "read": "Read case study",
+    "ctaTitle": "Have a constraint like this?",
+    "ctaDescription": "Bring the line and the metric. We will start with a short diagnostic."
+  },
+  "contact": {
+    "email": "Email",
+    "phone": "Phone",
+    "office": "Office",
+    "hours": "Hours",
+    "formAria": "Contact form",
+    "detailsTitle": "Direct contact"
+  },
+  "services": {
+    "outcomes": "Typical outcomes"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "company": "Company (optional)",
+    "message": "How can we help?",
+    "consent": "I agree to the",
+    "privacy": "privacy policy",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "success": "Thanks! Your message has been received. We will be in touch shortly.",
+    "error": "Something went wrong. Please try again."
+  },
+  "legal": {
+    "updated": "Last updated",
+    "demoNotice": "This is a fictional demo page. Nothing here is legal advice or a real commercial policy.",
+    "backHome": "Back to home"
+  },
+  "cookie": {
+    "title": "Cookies & privacy",
+    "description": "This demo uses a privacy-friendly, consent-gated analytics stub. No data is sent.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "policy": "Privacy policy"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you requested does not exist in this demo.",
+    "back": "Back to home"
+  },
+  "redirect": {
+    "title": "Taking you to the English site",
+    "description": "This demo starts in English. Choose Español if you prefer.",
+    "continue": "Continue to /en/"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "breadcrumb": "Breadcrumb"
+  }
+}

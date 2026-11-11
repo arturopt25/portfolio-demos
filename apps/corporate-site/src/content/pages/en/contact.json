@@ -1,0 +1,40 @@
+{
+  "slug": "contact",
+  "seo": {
+    "title": "Contact — Ferrowind Partners",
+    "description": "Contact the fictional Ferrowind Partners team. This demo uses a mock form adapter, so nothing is sent or stored."
+  },
+  "hero": {
+    "eyebrow": "Contact",
+    "title": "Tell us about the line that will not behave.",
+    "description": "A short description of the symptom is more useful than a formal brief. This demo uses a mock adapter; nothing is transmitted."
+  },
+  "form": {
+    "title": "Start a conversation",
+    "description": "Tell us what is happening, what you have already tried, and what a good outcome looks like."
+  },
+  "details": [
+    {
+      "label": "Email",
+      "value": "hello@ferrowind.example",
+      "href": "mailto:hello@ferrowind.example"
+    },
+    {
+      "label": "Phone",
+      "value": "+1 555 010 2048",
+      "href": "tel:+15550102048"
+    },
+    {
+      "label": "Office",
+      "value": "1200 Foundry Way, Suite 400, Pittsburgh, PA 15222"
+    },
+    {
+      "label": "Hours",
+      "value": "Mon–Fri, 08:00–17:00 ET (fictional)"
+    }
+  ],
+  "cta": {
+    "title": "Prefer to see the work first?",
+    "description": "The case studies show how we scope an engagement and what the handover looks like."
+  }
+}

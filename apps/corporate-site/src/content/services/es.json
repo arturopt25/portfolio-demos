@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "plant-engineering",
+    "name": "Ingeniería de planta y procesos",
+    "summary": "Encuentra la restricción real y corrígela sin un proyecto de capital.",
+    "icon": "factory",
+    "description": "Mapeamos el flujo de materiales e información, medimos dónde pierde tiempo la línea y diseñamos el cambio más pequeño que recupera capacidad. El trabajo se mantiene anclado a los equipos que ya operas.",
+    "outcomes": [
+      "Estudios de capacidad y desbloqueo con una lista de acciones priorizadas",
+      "Balanceo de líneas y reducción de tiempos de cambio",
+      "Documentación de procesos que los operadores sí van a usar"
+    ]
+  },
+  {
+    "slug": "maintenance-strategy",
+    "name": "Mantenimiento y confiabilidad",
+    "summary": "Pasa de las reparaciones reactivas a un plan de mantenimiento defendible.",
+    "icon": "gauge",
+    "description": "Revisamos criticidad de activos, historial de fallas y la realidad de los repuestos, y luego construimos un plan preventivo que encaja con el equipo disponible. El objetivo son menos sorpresas, no una carpeta que nunca sale de la oficina.",
+    "outcomes": [
+      "Revisión de criticidad de activos y modos de falla",
+      "Diseño de mantenimiento preventivo y basado en condición",
+      "Planificación de repuestos y paradas"
+    ]
+  },
+  {
+    "slug": "energy-programs",
+    "name": "Programas de energía y emisiones",
+    "summary": "Reduce la intensidad energética con proyectos que pasan la prueba de retorno.",
+    "icon": "leaf",
+    "description": "Establecemos la línea base de energía por línea y turno, identificamos calor recuperable y carga inactiva, y ordenamos los proyectos por retorno y riesgo operativo. Cada recomendación incluye un plan de medición.",
+    "outcomes": [
+      "Línea base de energía y emisiones por área de proceso",
+      "Evaluación de recuperación de calor y electrificación",
+      "Plan de medición y verificación para cada proyecto"
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "slug": "services",
+  "seo": {
+    "title": "Servicios — Ferrowind Partners",
+    "description": "Servicios ficticios de ingeniería industrial: ingeniería de planta y procesos, mantenimiento y confiabilidad, y programas de energía y emisiones."
+  },
+  "hero": {
+    "eyebrow": "Servicios",
+    "title": "Ingeniería que sobrevive al contacto con la producción.",
+    "description": "Tres prácticas, ajustadas a la restricción que tienes enfrente. Sin teatro de transformación y sin una estrategia de 200 diapositivas."
+  },
+  "intro": {
+    "title": "Sin teatro de transformación.",
+    "paragraphs": [
+      "La mayoría de los problemas de planta no son misterios. Son una restricción que nadie midió, un estándar que nadie posee o un plan de mantenimiento que supone una cuadrilla del doble del tamaño real.",
+      "Empezamos con un diagnóstico corto, acordamos la restricción por escrito y solo entonces proponemos trabajo. Si la respuesta honesta es que no nos necesitas, lo decimos."
+    ]
+  },
+  "process": {
+    "eyebrow": "Cómo trabajamos",
+    "title": "Un ciclo operativo de cuatro pasos.",
+    "description": "Ciclos cortos, supuestos visibles y un plan de traspaso desde el primer día.",
+    "steps": [
+      {
+        "title": "Diagnosticar",
+        "description": "Recorremos la línea, revisamos los datos y acordamos la restricción antes de proponer una solución."
+      },
+      {
+        "title": "Diseñar",
+        "description": "Convertimos el diagnóstico en un plan de ingeniería acotado, con costos, riesgos y una ruta de reversión."
+      },
+      {
+        "title": "Implementar",
+        "description": "Trabajamos junto a los equipos de planta en la puesta en marcha, la capacitación y la primera semana estable."
+      },
+      {
+        "title": "Sostener",
+        "description": "Dejamos estándares, tableros y una lista corta con las siguientes tres mejoras."
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿No sabes qué práctica encaja?",
+    "description": "Describe el síntoma. Te diremos si es un problema de proceso, de confiabilidad o de energía, o ninguno de los anteriores."
+  }
+}

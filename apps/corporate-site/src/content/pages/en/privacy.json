@@ -1,0 +1,39 @@
+{
+  "slug": "privacy",
+  "seo": {
+    "title": "Privacy notice — Ferrowind Partners",
+    "description": "Fictional privacy notice for the Ferrowind Partners portfolio demo. The contact form uses a mock adapter and sends nothing."
+  },
+  "title": "Privacy notice",
+  "updated": "January 2026",
+  "intro": "This is a fictional privacy notice for a portfolio demo. It is written to look realistic, but Ferrowind Partners is not a real company and this site does not operate a production service.",
+  "sections": [
+    {
+      "heading": "What this demo collects",
+      "paragraphs": [
+        "The contact form is wired to a mock adapter. Name, email, company, and message stay in browser memory long enough to show the success state. They are not transmitted, logged, or stored.",
+        "Analytics is a no-op stub. Events are only passed to an adapter after you grant consent, and the default adapter discards them."
+      ]
+    },
+    {
+      "heading": "Cookies and local storage",
+      "paragraphs": [
+        "The cookie banner stores your choice in local storage so it does not ask again. No advertising or tracking cookies are set.",
+        "You can clear the stored choice at any time through your browser's site-data settings."
+      ]
+    },
+    {
+      "heading": "Third parties",
+      "paragraphs": [
+        "No third-party analytics, advertising, or CRM services are connected to this demo. Fonts are self-hosted at build time through next/font.",
+        "If this demo is later connected to a real backend or CMS, this notice must be replaced before launch."
+      ]
+    },
+    {
+      "heading": "Contact",
+      "paragraphs": [
+        "Questions about this fictional notice can be sent to hello@ferrowind.example. The address is reserved for examples and does not receive mail."
+      ]
+    }
+  ]
+}

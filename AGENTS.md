@@ -14,11 +14,14 @@ This file is the primary instruction set for AI agents working in this repositor
 
 Current demo brands:
 
-| App                    | Brand               | Status                   |
-| ---------------------- | ------------------- | ------------------------ |
-| `apps/saas-landing`    | **Casefern**        | Fictional B2B SaaS demo  |
-| `apps/corporate-site`  | **Nexova Systems**  | Fictional corporate demo |
-| `apps/agency-campaign` | **Catalyst Studio** | Fictional agency demo    |
+| App                    | Brand                  | Status                    |
+| ---------------------- | ---------------------- | ------------------------- |
+| `apps/saas-landing`    | **Casefern**           | Fictional B2B SaaS demo   |
+| `apps/corporate-site`  | **Ferrowind Partners** | Fictional industrial demo |
+| `apps/agency-campaign` | **Catalyst Studio**    | Fictional agency demo     |
+
+`Catalyst Studio` is a provisional name reserved for Phase 4 only. Do not use it
+in Phase 3 work.
 
 ## Stack and conventions
 
@@ -75,6 +78,26 @@ When changing anything in `packages/ui`:
    - `@folio/corporate-site`
    - `@folio/agency-campaign`
 3. Confirm no app shell regressed.
+
+## Lessons from Phase 2 (keep these patterns)
+
+- **Anchor wrapper:** `Section` and `Hero` render an inner
+  `<span id={id} class="block h-0 scroll-mt-[4.5rem]" aria-hidden="true" />`
+  instead of putting `id`/`scroll-mt` on the `<section>`. This avoids stacked
+  offsets and lands section headings ~80–100px below the sticky header. Use the
+  same pattern for any new anchor target.
+- **Analytics:** pass `analyticsEvent` on `CtaLink`; shared CTAs render it as
+  `data-analytics`. The app-level `AnalyticsBridge` listens for clicks and calls
+  consent-gated `trackEvent`. Do not wire analytics functions into server
+  components.
+- **Lighthouse:** run LHCI against the **static build** (`staticDistDir`), never
+  the dev server. Mobile 393×852, 3 runs, assertions at `0.95`. Report all four
+  categories per run plus the median.
+- **WSL Chrome path:** `chrome-launcher` can fail on WSL with a Windows temp
+  path. The `CHROME_PATH` wrapper is a **local-only** workaround. Never commit
+  machine-specific paths, wrapper scripts, or absolute home directories.
+- **Public repo hygiene:** run a secret/absolute-path scan before every commit.
+  Keep placeholder URLs centralized in one brand/config file.
 
 ## Definition of Done
 

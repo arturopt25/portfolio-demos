@@ -1,0 +1,224 @@
+import type { Metadata } from "next";
+
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { notFound } from "next/navigation";
+
+import { breadcrumbJsonLd } from "@folio/seo";
+import { Cta, JsonLd, LinkButton, Section } from "@folio/ui";
+
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { mdxComponents } from "@/components/mdx-components";
+import { brand } from "@/content/brand";
+import { contentAdapter } from "@/lib/content-adapter";
+import { getDictionary } from "@/lib/dictionary";
+import { isLocale, locales, type Locale } from "@/lib/i18n";
+import { pageMetadata, pageUrl } from "@/lib/seo";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const entries = await Promise.all(
+    locales.map(async (locale) => {
+      const studies = await contentAdapter.getCaseStudies(locale);
+
+      return studies.map((study) => ({ locale, slug: study.slug }));
+    }),
+  );
+
+  return entries.flat();
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale: raw, slug } = await params;
+  if (!isLocale(raw)) {
+    return {};
+  }
+
+  const study = await contentAdapter.getCaseStudy(raw, slug);
+
+  if (!study) {
+    return {};
+  }
+
+  return pageMetadata({
+    locale: raw,
+    path: `/case-studies/${study.slug}`,
+    title: `${study.title} — ${brand.name}`,
+    description: study.summary,
+  });
+}
+
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale: raw, slug } = await params;
+  if (!isLocale(raw)) {
+    return null;
+  }
+
+  const locale: Locale = raw;
+  const dictionary = getDictionary(locale);
+  const study = await contentAdapter.getCaseStudy(locale, slug);
+
+  if (!study) {
+    notFound();
+  }
+
+  const publishedLabel = new Intl.DateTimeFormat(locale === "en" ? "en-US" : "es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(study.publishedAt));
+
+  const breadcrumb = breadcrumbJsonLd([
+    { name: dictionary.common.home, url: pageUrl(locale) },
+    { name: dictionary.nav.caseStudies, url: pageUrl(locale, "/case-studies") },
+    {
+      name: study.title,
+      url: pageUrl(locale, `/case-studies/${study.slug}`),
+    },
+  ]);
+
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: study.title,
+    description: study.summary,
+    datePublished: study.publishedAt,
+    dateModified: study.publishedAt,
+    inLanguage: locale,
+    author: {
+      "@type": "Organization",
+      name: brand.name,
+      url: brand.baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: brand.name,
+      url: brand.baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${brand.baseUrl}/icon.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl(locale, `/case-studies/${study.slug}`),
+    },
+    about: study.sector,
+    articleSection: dictionary.nav.caseStudies,
+  };
+
+  return (
+    <>
+      <Section className="pt-6 pb-0">
+        <Breadcrumbs
+          label={dictionary.a11y.breadcrumb}
+          items={[
+            { label: dictionary.common.home, href: `/${locale}/` },
+            { label: dictionary.nav.caseStudies, href: `/${locale}/case-studies/` },
+            { label: study.title },
+          ]}
+        />
+      </Section>
+
+      <Section className="pt-8">
+        <article className="mx-auto max-w-4xl">
+          <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+            {study.sector} · {study.year}
+          </p>
+          <h1 className="font-display text-fg mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+            {study.title}
+          </h1>
+          <p className="text-muted mt-5 text-lg leading-8">{study.summary}</p>
+
+          <dl className="border-border mt-8 grid gap-4 border-y py-5 text-sm sm:grid-cols-2">
+            <div>
+              <dt className="text-muted">{dictionary.caseStudies.client}</dt>
+              <dd className="text-fg mt-1 font-semibold">{study.client}</dd>
+            </div>
+            <div>
+              <dt className="text-muted">{dictionary.caseStudies.published}</dt>
+              <dd className="text-fg mt-1 font-semibold">
+                <time dateTime={study.publishedAt}>{publishedLabel}</time>
+              </dd>
+            </div>
+          </dl>
+
+          <h2 className="font-display text-fg mt-10 text-2xl font-bold tracking-tight">
+            {dictionary.caseStudies.metrics}
+          </h2>
+
+          <div className="mt-4 overflow-x-auto">
+            <table className="border-border w-full border-collapse text-left text-sm">
+              <caption className="sr-only">{dictionary.caseStudies.metrics}</caption>
+              <thead>
+                <tr className="border-border border-b">
+                  <th scope="col" className="py-3 pr-4 font-semibold">
+                    {dictionary.caseStudies.metrics}
+                  </th>
+                  <th scope="col" className="py-3 pr-4 font-semibold">
+                    {dictionary.caseStudies.before}
+                  </th>
+                  <th scope="col" className="py-3 font-semibold">
+                    {dictionary.caseStudies.after}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {study.metrics.map((metric) => (
+                  <tr key={metric.label} className="border-border border-b last:border-0">
+                    <th scope="row" className="text-muted py-3 pr-4 font-medium">
+                      {metric.label}
+                    </th>
+                    <td className="py-3 pr-4 tabular-nums">{metric.before}</td>
+                    <td className="text-fg py-3 font-semibold tabular-nums">{metric.after}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-10">
+            <MDXRemote source={study.body} components={mdxComponents} />
+          </div>
+
+          <p className="border-border text-muted mt-10 border-t pt-6 text-sm leading-6">
+            {dictionary.caseStudies.fictional}
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <LinkButton href={`/${locale}/case-studies/`} variant="secondary">
+              {dictionary.common.allCaseStudies}
+            </LinkButton>
+            <LinkButton href={`/${locale}/contact/`}>{dictionary.common.bookCall}</LinkButton>
+          </div>
+        </article>
+      </Section>
+
+      <Cta
+        eyebrow={dictionary.nav.caseStudies}
+        title={dictionary.caseStudies.ctaTitle}
+        description={dictionary.caseStudies.ctaDescription}
+        primaryCta={{
+          label: dictionary.common.bookCall,
+          href: `/${locale}/contact/`,
+          analyticsEvent: "case_study_cta_click",
+        }}
+        secondaryCta={{
+          label: dictionary.common.exploreServices,
+          href: `/${locale}/services/`,
+        }}
+      />
+
+      <JsonLd data={[breadcrumb, article]} />
+    </>
+  );
+}

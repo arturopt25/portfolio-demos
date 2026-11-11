@@ -1,0 +1,16 @@
+{
+  "slug": "case-studies",
+  "seo": {
+    "title": "Case studies — Ferrowind Partners",
+    "description": "Fictional industrial engineering case studies with before-and-after metrics for foundry, pulp, and cement operations."
+  },
+  "hero": {
+    "eyebrow": "Case studies",
+    "title": "Small changes, measured honestly.",
+    "description": "Three fictional engagements, each with a before-and-after view of the metric that mattered. Client names and results are invented."
+  },
+  "cta": {
+    "title": "Want the version with your numbers?",
+    "description": "Bring a production line and a metric you do not trust. We will start there."
+  }
+}
