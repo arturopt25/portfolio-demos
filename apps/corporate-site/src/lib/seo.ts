@@ -26,6 +26,7 @@ export function pageMetadata({
     baseUrl: brand.baseUrl,
     path: localizePath(locale, path),
     locale: locale === "en" ? "en_US" : "es_ES",
+    alternateLocale: locale === "en" ? ["es_ES"] : ["en_US"],
     image: `/${locale}/og.png`,
     languages: languageAlternates(brand.baseUrl, path),
   });

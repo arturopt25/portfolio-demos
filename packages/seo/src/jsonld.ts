@@ -123,6 +123,7 @@ export type ServiceInput = {
   providerName: string;
   providerUrl: string;
   areaServed?: string;
+  inLanguage?: string;
 };
 
 export function serviceJsonLd({
@@ -131,6 +132,7 @@ export function serviceJsonLd({
   providerName,
   providerUrl,
   areaServed,
+  inLanguage,
 }: ServiceInput): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -138,6 +140,7 @@ export function serviceJsonLd({
     name,
     description,
     areaServed,
+    inLanguage,
     provider: {
       "@type": "Organization",
       name: providerName,

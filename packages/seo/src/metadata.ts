@@ -10,6 +10,7 @@ export type CreateMetadataInput = {
   image?: string;
   noIndex?: boolean;
   languages?: Record<string, string>;
+  alternateLocale?: string[];
 };
 
 export function createMetadata({
@@ -22,6 +23,7 @@ export function createMetadata({
   image,
   noIndex = false,
   languages,
+  alternateLocale,
 }: CreateMetadataInput): Metadata {
   const canonical = new URL(path, baseUrl).toString();
   const imageUrl = image ? new URL(image, baseUrl).toString() : undefined;
@@ -41,6 +43,7 @@ export function createMetadata({
       url: canonical,
       siteName,
       locale,
+      alternateLocale,
       images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630, alt: title }] : undefined,
     },
     twitter: {
