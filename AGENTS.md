@@ -189,6 +189,24 @@ When changing anything in `packages/ui`:
 - **One control:** the old footer theme link-list was removed; the hero
   radiogroup is the single palette control.
 
+## Lessons from Phase D (keep these patterns)
+
+- **Data-driven metrics:** content stores
+  `{ format, value | text, fractionDigits?, suffix?, signed? }` and
+  `formatMetric` renders with `Intl.NumberFormat`. Spanish uses comma decimals,
+  a space before `%`, point thousands, and U+2212 for negatives; English keeps
+  ASCII `-` and no space.
+- **Terminology:** `/es/` uses “Casos de éxito” and “Reservar una llamada”;
+  routes stay `/case-studies/` and `/contact/`.
+- **Footer grouping:** Empresa / Legal / Oficina. Keep localized addresses in
+  the dictionaries, not in `brand.ts`.
+- **Localized validation:** `ContactFormLabels.validation` plus
+  `createContactFormSchema` keep form errors in the page language.
+- **Key parity:** `scripts/check-i18n.mjs` runs in the corporate `typecheck`
+  and compares dictionary, page, service, and MDX frontmatter keys.
+- **Fallback pages:** the global 404 and root redirect are bilingual because
+  they sit outside the `[locale]` segment.
+
 ## Definition of Done
 
 - [ ] `pnpm lint`, `pnpm typecheck`, and `pnpm build` pass.

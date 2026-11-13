@@ -60,6 +60,29 @@ uses the shared color tokens, so it adapts to both palettes.
 - Local SVG illustration with explicit dimensions; self-hosted fonts via
   `next/font`.
 
+## Localization (EN/ES)
+
+Visible copy lives in `src/messages/{en,es}.json`,
+`src/content/pages/{en,es}/*.json`, `src/content/services/{en,es}.json`, and
+`src/content/case-studies/{en,es}/*.mdx`.
+
+- Metrics store a number plus a format (`percent`, `number`, `text`) and render
+  through `src/lib/format.ts` with `Intl.NumberFormat`. Spanish uses comma
+  decimals, a space before `%`, a thousands point, and U+2212 for negatives
+  (`8,4 %`, `−11 %`); English keeps `8.4%` and `-11%`.
+- Spanish terminology uses “Casos de éxito” and “Reservar una llamada”. Routes
+  remain `/case-studies/` and `/contact/`.
+- Footer columns are **Empresa / Legal / Oficina** in Spanish and
+  **Company / Legal / Office** in English. The Spanish address uses
+  “Oficina 400”.
+- Form labels and validation messages are localized through the shared
+  `ContactForm`, `ContactFormLabels.validation`, and
+  `createContactFormSchema`.
+- The global 404 and the root redirect are bilingual because they sit outside
+  the `[locale]` segment.
+- `scripts/check-i18n.mjs` runs before `tsc` in `typecheck` and fails on en/es
+  dictionary or content key mismatches.
+
 ## Lighthouse metrics
 
 Mobile Lighthouse CI, static production build, 393×852, 3 runs per URL.
@@ -109,6 +132,22 @@ The `/es/?theme=dark` performance median is 99 because TBT measured 92–105 ms
 across the three runs; FCP/LCP and CLS are identical to the light page. All
 categories remain above the 95 target.
 
+### Phase D i18n verification
+
+Static build, mobile 393×852, 3 runs per URL, medians:
+
+| URL                                               | Performance | Accessibility | Best Practices | SEO | CLS |
+| ------------------------------------------------- | ----------: | ------------: | -------------: | --: | --- |
+| `/en/`                                            |         100 |           100 |            100 | 100 | 0   |
+| `/en/?theme=dark`                                 |         100 |           100 |            100 | 100 | 0   |
+| `/es/`                                            |          99 |           100 |            100 | 100 | 0   |
+| `/es/?theme=dark`                                 |         100 |           100 |            100 | 100 | 0   |
+| `/en/case-studies/foundry-throughput/`            |         100 |           100 |            100 | 100 | 0   |
+| `/en/case-studies/foundry-throughput/?theme=dark` |         100 |           100 |            100 | 100 | 0   |
+
+`/es/` measured 99 on runs 1 and 3 (TBT variance); FCP/LCP and CLS are unchanged.
+All categories remain above the 95 target.
+
 ## Reproduce
 
 ```bash
@@ -127,8 +166,9 @@ pnpm --filter @folio/corporate-site lighthouse:report
 ```
 
 The config (`apps/corporate-site/.lighthouserc.cjs`) uses `staticDistDir:
-"./dist"`, relative URLs (`/en/` and one case study), 3 runs, mobile 393×852,
-and `0.95` assertions in all four categories. It never uses the dev server.
+"./dist"`, relative URLs for `/en/`, `/es/`, and the foundry case study in light
+and dark, 3 runs, mobile 393×852, and `0.95` assertions in all four categories.
+It never uses the dev server.
 
 > WSL note: `chrome-launcher` can fail with a Windows temp path. Point
 > `CHROME_PATH` at a **local** wrapper that rewrites `--user-data-dir` to a Linux
@@ -161,6 +201,13 @@ and `0.95` assertions in all four categories. It never uses the dev server.
   inherit theme tokens. It is decorative and hidden from assistive technology.
 - The content adapter reads local files with `node:fs` at build time. It is not
   edge-runtime compatible by design; swap in a CMS adapter if that changes.
+- Metric values are data-driven: each `before`/`after` needs a `format` plus a
+  numeric `value` or a `text` fallback. The formatter is the single source of
+  percent, decimal, thousands, and sign formatting.
+- The en/es parity check compares key structures in dictionaries, page JSON,
+  services JSON, and MDX frontmatter. It does not compare translated values.
+- The global 404 and root redirect are bilingual because they sit outside the
+  `[locale]` segment and cannot know the visitor's locale.
 
 ## Manual checks
 
@@ -169,15 +216,26 @@ At 393×852 and 1440×900:
 - [ ] `/` redirects to `/en/` (meta refresh and `_redirects`).
 - [ ] `/en/` and `/es/` render with the correct `<html lang>` and no horizontal
       overflow.
+- [ ] `/es/` uses “Casos de éxito”, “Reservar una llamada”, “Empresa / Legal /
+      Oficina”, and “Oficina 400”.
+- [ ] Spanish percentages use comma decimals and a space before `%`; negative
+      values use `−`.
+- [ ] English case study metrics still read `61%`, `8.4%`, `9,400 t/yr`,
+      `2.6 years`, `-11%`, and `+38%`.
 - [ ] Language switcher keeps the current route (including case study detail)
-      and exposes `hrefLang`, `lang`, and `aria-current`.
+      and exposes `hrefLang`, `lang`, and `aria-current`; the current language
+      link is labelled with its language name, not “Switch language to …”.
 - [ ] Header nav marks the current section, including case study detail pages.
 - [ ] Deep links `/#services`, `/#case-studies`, `/#contact`, and
       `/en/services/#energy-programs` land below the sticky header.
 - [ ] Case study cards open the detail page; MDX content and before/after table
       render.
 - [ ] Contact form shows validation errors for empty fields and an inline
-      success state for a valid submission.
+      success state for a valid submission, in the page language.
+- [ ] Testimonial avatars are decorative; a screen reader reads the name only.
+- [ ] The global 404 and root redirect show both English and Spanish.
+- [ ] `pnpm typecheck` prints `[i18n] en/es dictionary and content key parity
+OK`.
 - [ ] `/en/og.png` and `/es/og.png` return `image/png`; metadata contains
       `og:image` and `twitter:image`.
 - [ ] Canonical and `hreflang` alternates are present in the HTML source.
