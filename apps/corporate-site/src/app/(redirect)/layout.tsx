@@ -13,8 +13,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Redirecting — Ferrowind Partners",
-  description: "This demo is available in English and Spanish.",
+  title: "Redirecting / Redirigiendo — Ferrowind Partners",
+  description:
+    "This demo is available in English and Spanish. / Esta demo está disponible en inglés y en español.",
   robots: {
     index: false,
     follow: false,

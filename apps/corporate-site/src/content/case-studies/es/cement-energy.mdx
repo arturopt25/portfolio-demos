@@ -5,17 +5,17 @@ sector: "Materiales de construcción"
 year: "2025"
 publishedAt: "2025-04-22"
 order: 3
-summary: "Caso práctico ficticio de una cementera: reducir energía por tonelada con medición, eliminación de carga inactiva y un proyecto de recuperación de calor secuenciado."
+summary: "Caso de éxito ficticio de una cementera: reducir energía por tonelada con medición, eliminación de carga inactiva y un proyecto de recuperación de calor secuenciado."
 metrics:
   - label: "Energía por tonelada"
-    before: "Línea base"
-    after: "-11%"
+    before: { format: "text", text: "Línea base" }
+    after: { format: "percent", value: -0.11, fractionDigits: 0, signed: true }
   - label: "CO2e evitado"
-    before: "0"
-    after: "9.400 t/año"
+    before: { format: "number", value: 0 }
+    after: { format: "number", value: 9400, suffix: " t/año" }
   - label: "Retorno del programa"
-    before: "Desconocido"
-    after: "2,6 años"
+    before: { format: "text", text: "Desconocido" }
+    after: { format: "number", value: 2.6, fractionDigits: 1, suffix: " años" }
 ---
 
 ## Contexto
@@ -28,15 +28,15 @@ El equipo suponía que la única palanca relevante era una gran actualización d
 
 Ejecutamos una campaña de medición de seis semanas en el horno, el molino de crudo, el molino de cemento y el sistema de aire comprimido, y construimos un perfil de carga por turno.
 
-- El 17% de la carga de aire comprimido ocurría en periodos sin demanda de producción.
+- El 17 % de la carga de aire comprimido ocurría en periodos sin demanda de producción.
 - El escape del enfriador contenía suficiente calor recuperable para precalentar la alimentación del molino de crudo.
-- Dos motores grandes quedaban inactivos más del 40% de las horas programadas.
+- Dos motores grandes quedaban inactivos más del 40 % de las horas programadas.
 
 El programa secuenció primero las correcciones operativas sin costo y luego un proyecto de recuperación de calor con línea base medida.
 
 ## Resultados
 
-- La energía por tonelada cayó 11% en las áreas medidas.
+- La energía por tonelada cayó 11 % en las áreas medidas.
 - El sitio evitó aproximadamente 9.400 toneladas de CO2e al año (ficticias).
 - El retorno combinado del programa fue de 2,6 años, y las correcciones operativas se pagaron en menos de cuatro meses.
 

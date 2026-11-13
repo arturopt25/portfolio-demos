@@ -5,22 +5,22 @@ sector: "Productos forestales"
 year: "2024"
 publishedAt: "2024-11-06"
 order: 2
-summary: "Caso práctico ficticio de una planta de pulpa: reducir paradas no planificadas reconstruyendo el plan de mantenimiento en torno a pocos activos críticos."
+summary: "Caso de éxito ficticio de una planta de pulpa: reducir paradas no planificadas reconstruyendo el plan de mantenimiento en torno a pocos activos críticos."
 metrics:
   - label: "Paradas no planificadas"
-    before: "14%"
-    after: "5%"
+    before: { format: "percent", value: 0.14, fractionDigits: 0 }
+    after: { format: "percent", value: 0.05, fractionDigits: 0 }
   - label: "Acumulación de mantenimiento"
-    before: "9 semanas"
-    after: "3 semanas"
+    before: { format: "number", value: 9, suffix: " semanas" }
+    after: { format: "number", value: 3, suffix: " semanas" }
   - label: "Tiempo medio entre fallas"
-    before: "Línea base"
-    after: "+38%"
+    before: { format: "text", text: "Línea base" }
+    after: { format: "percent", value: 0.38, fractionDigits: 0, signed: true }
 ---
 
 ## Contexto
 
-Northvale Pulp (ficticio) opera una planta de pulpa kraft con un equipo de mantenimiento que se había vuelto casi totalmente reactivo. Las paradas no planificadas representaban el 14%, la acumulación de órdenes llegaba a nueve semanas y la lista de activos críticos no se revisaba desde hacía seis años.
+Northvale Pulp (ficticio) opera una planta de pulpa kraft con un equipo de mantenimiento que se había vuelto casi totalmente reactivo. Las paradas no planificadas representaban el 14 %, la acumulación de órdenes llegaba a nueve semanas y la lista de activos críticos no se revisaba desde hacía seis años.
 
 Cada parada se vivía como una emergencia. El equipo tenía muchos datos y muy poco acuerdo sobre qué activos atender primero.
 
@@ -28,7 +28,7 @@ Cada parada se vivía como una emergencia. El equipo tenía muchos datos y muy p
 
 Realizamos un taller de criticidad con operadores, planificadores de mantenimiento y el ingeniero de la planta, y luego contrastamos el resultado con dos años de historial de fallas.
 
-- Ocho activos concentraban el 22% de las órdenes correctivas y una parte desproporcionada de las paradas.
+- Ocho activos concentraban el 22 % de las órdenes correctivas y una parte desproporcionada de las paradas.
 - Dos de esos activos no tenían ninguna tarea preventiva.
 - El almacén de repuestos tenía artículos caros de baja rotación y faltaban tres sellos críticos.
 
@@ -36,9 +36,9 @@ El plan fue deliberadamente pequeño: una lista de tareas preventivas para ocho 
 
 ## Resultados
 
-- Las paradas no planificadas cayeron de 14% a 5% en nueve meses.
+- Las paradas no planificadas cayeron de 14 % a 5 % en nueve meses.
 - La acumulación de mantenimiento bajó de nueve a tres semanas.
-- El tiempo medio entre fallas mejoró 38% en el grupo de activos críticos.
+- El tiempo medio entre fallas mejoró 38 % en el grupo de activos críticos.
 
 ## Qué cambió
 

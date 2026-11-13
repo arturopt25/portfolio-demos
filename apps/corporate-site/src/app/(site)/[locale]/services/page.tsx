@@ -53,6 +53,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       description: service.summary,
       providerName: brand.name,
       providerUrl: brand.baseUrl,
+      inLanguage: locale,
     }),
   );
 

@@ -11,6 +11,7 @@ import { mdxComponents } from "@/components/mdx-components";
 import { brand } from "@/content/brand";
 import { contentAdapter } from "@/lib/content-adapter";
 import { getDictionary } from "@/lib/dictionary";
+import { formatDate, formatMetric } from "@/lib/format";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { pageMetadata, pageUrl } from "@/lib/seo";
 
@@ -70,12 +71,7 @@ export default async function CaseStudyPage({
     notFound();
   }
 
-  const publishedLabel = new Intl.DateTimeFormat(locale === "en" ? "en-US" : "es-ES", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(study.publishedAt));
+  const publishedLabel = formatDate(study.publishedAt, locale);
 
   const breadcrumb = breadcrumbJsonLd([
     { name: dictionary.common.home, url: pageUrl(locale) },
@@ -178,8 +174,12 @@ export default async function CaseStudyPage({
                     <th scope="row" className="py-3 pr-4 font-medium text-muted">
                       {metric.label}
                     </th>
-                    <td className="py-3 pr-4 tabular-nums">{metric.before}</td>
-                    <td className="py-3 font-semibold tabular-nums text-fg">{metric.after}</td>
+                    <td className="py-3 pr-4 tabular-nums">
+                      {formatMetric(metric.before, locale)}
+                    </td>
+                    <td className="py-3 font-semibold tabular-nums text-fg">
+                      {formatMetric(metric.after, locale)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

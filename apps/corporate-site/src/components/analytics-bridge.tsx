@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { trackEvent } from "@folio/ui";
+import { configureAnalytics, noopAnalyticsAdapter, trackEvent } from "@folio/ui";
 
 /**
  * Single delegated click listener for `data-analytics` elements.
@@ -10,6 +10,10 @@ import { trackEvent } from "@folio/ui";
  * consent-gated no-op adapter from `@folio/ui`.
  */
 export function AnalyticsBridge() {
+  useEffect(() => {
+    configureAnalytics(noopAnalyticsAdapter);
+  }, []);
+
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       const target = event.target;

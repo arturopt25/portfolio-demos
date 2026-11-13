@@ -69,8 +69,12 @@ that `src/app/layout.tsx` renders in `<head>`. The script runs before first pain
 3. sets or removes `data-theme` on `<html>`, and
 4. otherwise falls back to the build-time default.
 
-It never reads or writes localStorage or cookies. Browser verification with the
-static build measured **0.0000 CLS** for default, dark, and bold.
+The script applies `data-theme`, `color-scheme`, and the `theme-color` meta
+before paint. It never writes storage. A remembered theme is read from
+`localStorage` (`catalyst-theme`) only when consent (`catalyst-consent`) is
+already granted; before consent, the theme lives only in the URL and is
+shareable via `?theme=`. Browser verification with the static build measured
+**0.0000 CLS** for default, dark, and bold.
 
 The build-time default is `brand.defaultTheme` (`"default"`). Override it without
 touching code:
@@ -81,6 +85,32 @@ NEXT_PUBLIC_DEFAULT_THEME=dark pnpm --filter @folio/agency-campaign build
 
 Invalid values fall back to the brand default.
 
+### Hero palette selector
+
+The "Three palettes. One page." hero card is a `radiogroup` with three real
+buttons (`role="radio"`, `aria-checked`, `aria-label="Default theme"`, etc.).
+Only the selected radio is in the tab order. Arrow keys move and select,
+Home/End jump to the first/last palette, and Enter/Space select. Selection
+applies `data-theme`, `color-scheme`, and the `theme-color` meta immediately.
+
+The URL is updated with `history.replaceState`, preserving the hash and every
+other query parameter (`utm_*`, `gclid`, `fbclid`, etc.). Selecting **Default**
+removes the `theme` parameter when the build default is also `default`; the
+absence of `theme` means the default palette. If the build default is `dark` or
+`bold`, selecting Default writes an explicit `?theme=default` so the light
+palette wins instead of falling back to the build default. The read-only
+`?theme=default` form is accepted in both cases.
+
+Each swatch keeps its own `data-theme`, so its colors stay true in every active
+page theme. The active ring follows the page theme via CSS, which avoids a
+pre-hydration flash of the wrong selected swatch. Swatch contrast: CTA
+`primary/primary-soft` is 7.07 / 5.36 / 9.15, and the label `muted/bg` is
+7.58 / 7.87 / 11.71 for default / dark / bold.
+
+The chosen palette is written to `localStorage` (`catalyst-theme`) only after
+consent (`catalyst-consent=granted`). Before consent it lives only in the URL.
+A consent-gated no-op `theme_select` event carries the chosen theme.
+
 ### Add a new theme in minutes
 
 1. Add the key to `THEMES` in `src/lib/theme.ts` (for example `"sunset"`). The
@@ -89,8 +119,9 @@ Invalid values fall back to the brand default.
    token names (`--color-bg`, `--color-fg`, `--color-primary`,
    `--color-primary-fg`, `--color-primary-soft`, `--color-ring`, etc.).
    Keep layout tokens (spacing, radii) unchanged.
-3. Add a preview link to `themePreviewLinks` in `src/content/campaign.tsx` if you
-   want it in the footer demo control.
+3. Add the palette to `PALETTES` in `src/components/theme-showcase.tsx` so it
+   appears as a radio swatch, and add a matching `data-swatch` selector in
+   `src/app/globals.css` for the active ring.
 4. Check contrast for text, links, buttons, badges, and the focus ring. The
    lowest dark-theme pair is `primary` on `elevated` at **4.90:1**; keep every
    pair at **≥ 4.5:1** for normal text (≥ 3:1 for non-text focus indicators).
@@ -132,7 +163,8 @@ The demo is intentionally content-driven:
   events (`cta_click`, `form_start`, `form_submit`, `thank_you_view`).
 
 Consent is stored separately in `localStorage` under `catalyst-consent` by the
-shared cookie banner. The page never persists the selected theme.
+shared cookie banner. The selected palette is remembered under
+`catalyst-theme` only after consent; before consent it lives only in the URL.
 
 ## Lead form and thank-you page
 
@@ -187,11 +219,42 @@ No category landed in the 90–94 range. One default-theme performance run score
 were collected with `/?theme=dark` and `/?theme=bold` against the same static
 export.
 
+### Phase A verification
+
+The shared theme script was re-run after the Phase A refactor. Dark and bold
+medians remain **100 / 100 / 100 / 100**. The default page measured
+**99 / 100 / 100 / 100** (runs 100/99/99; TBT 96–101.5 ms), which is TBT
+variance rather than a change in FCP, LCP, or CLS (all unchanged, CLS 0). The
+assertion threshold remains `0.95`.
+
+### Phase C verification
+
+The interactive palette radiogroup was measured against the same static build:
+
+| Theme   | Run 1 (P/A/BP/SEO)    | Run 2                 | Run 3                 | Median                    | Δ vs Phase A  |
+| ------- | --------------------- | --------------------- | --------------------- | ------------------------- | ------------- |
+| Default | 100 / 100 / 100 / 100 | 99 / 100 / 100 / 100  | 99 / 100 / 100 / 100  | **99 / 100 / 100 / 100**  | 0 / 0 / 0 / 0 |
+| Dark    | 100 / 100 / 100 / 100 | 99 / 100 / 100 / 100  | 100 / 100 / 100 / 100 | **100 / 100 / 100 / 100** | 0 / 0 / 0 / 0 |
+| Bold    | 99 / 100 / 100 / 100  | 100 / 100 / 100 / 100 | 100 / 100 / 100 / 100 | **100 / 100 / 100 / 100** | 0 / 0 / 0 / 0 |
+
+CLS is 0 for all three. The default 99 is the same TBT variance seen in Phase A;
+FCP/LCP/CLS are unchanged and all categories remain above the 95 target.
+
 ## Verification performed
 
 - `?theme=default|dark|bold` applies the expected body colors; `?theme=evil`
   falls back to default.
 - CLS measured at 0.0000 for all three themes.
+- The hero palette radiogroup works with mouse, Enter/Space, Arrow keys, Home,
+  and End; roving tabindex keeps one tab stop.
+- Selecting a palette preserves the hash and all non-theme query parameters; the
+  hidden UTM fields are unchanged.
+- Swatches keep their own palette in default/dark/bold page themes; CTA and label
+  contrast stay at or above 5.36:1.
+- Theme persistence: reject → select → fresh `/` returns to default; accept →
+  select → `/` remembers the palette.
+- Selecting Default removes the `theme` parameter; `?theme=default` still loads
+  as the default palette.
 - UTM values are absent from `sessionStorage` before consent and present after
   accepting; `gclid`/`fbclid` values never appear in storage.
 - Empty form submit shows all validation errors; a valid submit shows the success
@@ -230,8 +293,12 @@ post-deploy checklist.
   the default adapter. Wire a real provider where `configureAnalytics` is called.
 - **Session-scoped attribution.** `sessionStorage` is per tab and cleared when the
   tab closes. It is last-touch within the session, not a cross-device identity.
-- **URL-only theme selection.** The chosen theme is deliberately not persisted;
-  without `?theme=` the page returns to the build-time default.
+- **Consent-gated theme selection.** `?theme=` is always shareable. The chosen
+  palette is remembered in `localStorage` (`catalyst-theme`) only after consent
+  (`catalyst-consent`). Before consent it lives only in the URL; a fresh visit
+  to `/` returns to the build-time default.
+- **OS preference is ignored.** The page starts from the build-time default, not
+  `prefers-color-scheme`.
 - **Click IDs are presence-only.** `gclid` and `fbclid` values are not kept, so
   this demo cannot support offline conversion uploads.
 - **English-only.** No locale segment; the corporate demo covers i18n.

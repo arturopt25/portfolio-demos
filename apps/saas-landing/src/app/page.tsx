@@ -1,12 +1,21 @@
 import { Suspense } from "react";
 
-import { CookieBanner, Faq, Features, Footer, Header, Hero, JsonLd } from "@folio/ui";
+import { CookieBanner, Faq, Features, Footer, Header, Hero, JsonLd, ThemeToggle } from "@folio/ui";
 import { faqJsonLd, softwareApplicationJsonLd } from "@folio/seo";
 
 import { AnalyticsBridge } from "@/components/analytics-bridge";
+import { CasefernLockup } from "@/components/brand-mark";
+import { HeroIllustration } from "@/components/hero-illustration";
 import { SaasHero } from "@/components/saas-hero";
 import { brand, faqItems, features, heroCtas, heroVariants } from "@/content/saas";
 import { footerColumns, mainNavLinks, sectionIds } from "@/lib/anchors";
+import {
+  COLOR_SCHEMES,
+  CONSENT_STORAGE_KEY,
+  THEME_ATTRIBUTES,
+  THEME_COLORS,
+  THEME_STORAGE_KEY,
+} from "@/lib/theme";
 import { LeadFormSection } from "@/sections/lead-form-section";
 import { PricingSection } from "@/sections/pricing-section";
 import { SocialProof } from "@/sections/social-proof";
@@ -31,6 +40,9 @@ function HeroFallback() {
     <Hero
       compact
       variant="saas"
+      align="start"
+      media={<HeroIllustration />}
+      mediaClassName="hidden lg:block"
       {...heroVariants.a}
       primaryCta={heroCtas.primary}
       secondaryCta={heroCtas.secondary}
@@ -42,8 +54,18 @@ export default function HomePage() {
   return (
     <>
       <Header
-        brand={<span>{brand}</span>}
+        brand={<CasefernLockup />}
         links={mainNavLinks}
+        actions={
+          <ThemeToggle
+            attributes={THEME_ATTRIBUTES}
+            storageKey={THEME_STORAGE_KEY}
+            consentKey={CONSENT_STORAGE_KEY}
+            colorSchemes={COLOR_SCHEMES}
+            themeColors={THEME_COLORS}
+            labels={{ label: "Dark mode" }}
+          />
+        }
         cta={{
           label: "Get started",
           href: `#${sectionIds.contact}`,
@@ -55,7 +77,7 @@ export default function HomePage() {
 
       <main id="main">
         <Suspense fallback={<HeroFallback />}>
-          <SaasHero />
+          <SaasHero media={<HeroIllustration />} />
         </Suspense>
 
         <SocialProof />
@@ -82,7 +104,7 @@ export default function HomePage() {
       </main>
 
       <Footer
-        brand={brand}
+        brand={<CasefernLockup size="lg" />}
         description="A fictional B2B SaaS demo built with the Folio starter kit."
         columns={footerColumns}
       />

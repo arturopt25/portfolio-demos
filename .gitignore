@@ -16,6 +16,9 @@ coverage/
 *.p12
 *.pfx
 
+# Local Lighthouse/Chrome temp artifacts (WSL workaround)
+C:*
+
 # OS and editor files
 .DS_Store
 Thumbs.db

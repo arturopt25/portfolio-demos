@@ -4,6 +4,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 import { getDictionary } from "./dictionary";
+import type { MetricValue } from "./format";
 import { localizePath, type Locale } from "./i18n";
 
 /**
@@ -34,7 +35,7 @@ export type CtaContent = {
 };
 
 export type StatContent = {
-  value: string;
+  value: MetricValue;
   label: string;
 };
 
@@ -147,8 +148,8 @@ export type PageSlug = keyof PageContentMap;
 
 export type CaseStudyMetric = {
   label: string;
-  before: string;
-  after: string;
+  before: MetricValue;
+  after: MetricValue;
 };
 
 export type CaseStudySummary = {
@@ -204,6 +205,43 @@ function asNumber(value: unknown, field: string, file: string): number {
   return value;
 }
 
+function asMetricValue(value: unknown, field: string, file: string): MetricValue {
+  if (typeof value !== "object" || value === null) {
+    throw new Error(`[content-adapter] Expected an object for "${field}" in ${file}`);
+  }
+
+  const raw = value as Record<string, unknown>;
+  const format = raw.format;
+
+  if (format !== "percent" && format !== "number" && format !== "text") {
+    throw new Error(`[content-adapter] Expected a metric format for "${field}" in ${file}`);
+  }
+
+  const metric: MetricValue = { format };
+
+  if (typeof raw.value === "number") {
+    metric.value = raw.value;
+  }
+
+  if (typeof raw.text === "string") {
+    metric.text = raw.text;
+  }
+
+  if (typeof raw.fractionDigits === "number") {
+    metric.fractionDigits = raw.fractionDigits;
+  }
+
+  if (typeof raw.suffix === "string") {
+    metric.suffix = raw.suffix;
+  }
+
+  if (raw.signed === true) {
+    metric.signed = true;
+  }
+
+  return metric;
+}
+
 function asMetrics(value: unknown, file: string): CaseStudyMetric[] {
   if (!Array.isArray(value)) {
     throw new Error(`[content-adapter] Expected a "metrics" array in ${file}`);
@@ -218,8 +256,8 @@ function asMetrics(value: unknown, file: string): CaseStudyMetric[] {
 
     return {
       label: asString(metric.label, `metrics[${index}].label`, file),
-      before: asString(metric.before, `metrics[${index}].before`, file),
-      after: asString(metric.after, `metrics[${index}].after`, file),
+      before: asMetricValue(metric.before, `metrics[${index}].before`, file),
+      after: asMetricValue(metric.after, `metrics[${index}].after`, file),
     };
   });
 }

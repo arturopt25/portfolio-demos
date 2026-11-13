@@ -8,14 +8,14 @@ order: 1
 summary: "A fictional foundry case study: recovering casting-line capacity by fixing changeover and scrap, without a new furnace."
 metrics:
   - label: "Overall equipment effectiveness"
-    before: "61%"
-    after: "78%"
+    before: { format: "percent", value: 0.61, fractionDigits: 0 }
+    after: { format: "percent", value: 0.78, fractionDigits: 0 }
   - label: "Scrap rate"
-    before: "8.4%"
-    after: "3.1%"
+    before: { format: "percent", value: 0.084, fractionDigits: 1 }
+    after: { format: "percent", value: 0.031, fractionDigits: 1 }
   - label: "Changeover time"
-    before: "42 min"
-    after: "18 min"
+    before: { format: "number", value: 42, suffix: " min" }
+    after: { format: "number", value: 18, suffix: " min" }
 ---
 
 ## Context

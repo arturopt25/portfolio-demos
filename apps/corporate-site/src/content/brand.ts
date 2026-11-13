@@ -16,7 +16,6 @@ export const brand = {
   email: "hello@ferrowind.example",
   phone: "+1 555 010 2048",
   phoneHref: "+15550102048",
-  addressLines: ["1200 Foundry Way, Suite 400", "Pittsburgh, PA 15222"],
   founded: 2009,
 } as const;
 

@@ -8,14 +8,14 @@ order: 2
 summary: "A fictional pulp mill case study: cutting unplanned downtime by rebuilding the maintenance plan around a short list of critical assets."
 metrics:
   - label: "Unplanned downtime"
-    before: "14%"
-    after: "5%"
+    before: { format: "percent", value: 0.14, fractionDigits: 0 }
+    after: { format: "percent", value: 0.05, fractionDigits: 0 }
   - label: "Maintenance backlog"
-    before: "9 weeks"
-    after: "3 weeks"
+    before: { format: "number", value: 9, suffix: " weeks" }
+    after: { format: "number", value: 3, suffix: " weeks" }
   - label: "Mean time between failures"
-    before: "Baseline"
-    after: "+38%"
+    before: { format: "text", text: "Baseline" }
+    after: { format: "percent", value: 0.38, fractionDigits: 0, signed: true }
 ---
 
 ## Context

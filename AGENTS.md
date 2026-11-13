@@ -31,8 +31,9 @@ Current demo brands:
 - **Packages:** `@folio/config`, `@folio/seo`, `@folio/ui`.
 - **Language:** TypeScript strict. Avoid `any`; add a narrow cast only with a comment.
 - **Styling:** Tailwind CSS **v3** (pinned), shared preset, CSS-variable design
-  tokens in `packages/config/tokens.css`. Light mode is active; dark tokens exist
-  but are not activated.
+  tokens in `packages/config/tokens.css`. All three apps ship light and dark
+  themes; light is the default and the OS preference is not followed
+  automatically.
 - **Components:** functional, named exports, semantic HTML, visible focus states.
 - **Forms:** use the shared `ContactForm` and form-submission adapter. The default
   adapter is a mock; real endpoints must be isolated inside the adapter.
@@ -137,6 +138,74 @@ When changing anything in `packages/ui`:
 - **Nested theme previews:** a swatch that should always show the light palette
   needs an explicit `[data-theme="default"]` token block. A nested element
   without a `data-theme` inherits the page's active theme.
+
+## Lessons from Phase A (keep these patterns)
+
+- **Shared theme script:** `buildThemeScript` in `@folio/ui/theme` validates
+  `?theme=` against an allowlist, applies `data-theme`, `color-scheme`, and the
+  `theme-color` meta before first paint, and is imported by all three apps.
+- **Consent-gated persistence:** a stored theme is only read when the app's
+  consent key is already `"granted"`. `ThemeToggle` writes the theme only after
+  consent. Keys: `casefern-theme`/`folio-consent`,
+  `ferrowind-theme`/`ferrowind-consent`, `catalyst-theme`/`catalyst-consent`.
+- **Query-free canonicals:** `?theme=` and `?v=` are runtime/shareable only.
+  Canonical and `og:url` must stay query-free; verify in the built HTML.
+- **Inline SVG for themed art:** external `<img>` SVGs cannot inherit page CSS
+  variables. Inline illustrations and use `var(--color-*)` (see Ferrowind's
+  plant illustration).
+- **LHCI per theme:** group reports by `pathname + search` so light and dark
+  runs are not merged. The shared report script prints CLS per run.
+
+## Lessons from Phase B (keep these patterns)
+
+- **Shared logo lockup:** `BrandMark` in `@folio/ui` renders a themed icon tile
+  plus a heavier wordmark. Keep each app's `app/icon.svg` in sync with the header
+  mark.
+- **Hero media options:** `Hero` accepts `align="start"` and `mediaClassName`.
+  Use `hidden lg:block` for decorative media that should not affect mobile LCP.
+- **Themed inline SVG:** the tokens are RGB triples, so use
+  `rgb(var(--color-*))` in SVG CSS or inline styles. Plain
+  `fill="var(--color-*)"` resolves to black.
+- **Server-render decorative art:** pass the illustration from the server page
+  into the client hero as a `media` prop instead of importing it into the client
+  component.
+- **Phase B CLS:** the `?v=b` swap remains 0.0123; the illustration is hidden on
+  mobile and does not add CLS.
+
+## Lessons from Phase C (keep these patterns)
+
+- **Palette radiogroup:** the hero swatches are `role="radio"` buttons in a
+  `radiogroup` with roving tabindex. Arrow keys move and select; Home/End jump;
+  Enter/Space select. Each swatch keeps `data-theme` so its colors stay true.
+- **URL merge:** use `new URL(...)` plus `searchParams` and
+  `history.replaceState` to preserve the hash and UTM/click-id params. Removing
+  the `theme` param means the default palette.
+- **Pre-hydration active swatch:** drive the active ring from the page theme via
+  CSS (`html[data-theme="dark"] [data-swatch="dark"]`) so it is correct before
+  hydration.
+- **Consent-gated palette persistence:** write `catalyst-theme` only when
+  `catalyst-consent === "granted"`; otherwise remove it. Emit the consent-gated
+  `theme_select` event.
+- **One control:** the old footer theme link-list was removed; the hero
+  radiogroup is the single palette control.
+
+## Lessons from Phase D (keep these patterns)
+
+- **Data-driven metrics:** content stores
+  `{ format, value | text, fractionDigits?, suffix?, signed? }` and
+  `formatMetric` renders with `Intl.NumberFormat`. Spanish uses comma decimals,
+  a space before `%`, point thousands, and U+2212 for negatives; English keeps
+  ASCII `-` and no space.
+- **Terminology:** `/es/` uses “Casos de éxito” and “Reservar una llamada”;
+  routes stay `/case-studies/` and `/contact/`.
+- **Footer grouping:** Empresa / Legal / Oficina. Keep localized addresses in
+  the dictionaries, not in `brand.ts`.
+- **Localized validation:** `ContactFormLabels.validation` plus
+  `createContactFormSchema` keep form errors in the page language.
+- **Key parity:** `scripts/check-i18n.mjs` runs in the corporate `typecheck`
+  and compares dictionary, page, service, and MDX frontmatter keys.
+- **Fallback pages:** the global 404 and root redirect are bilingual because
+  they sit outside the `[locale]` segment.
 
 ## Definition of Done
 

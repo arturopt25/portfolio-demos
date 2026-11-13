@@ -9,11 +9,11 @@
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
-    "caseStudies": "Casos prácticos",
+    "caseStudies": "Casos de éxito",
     "contact": "Contacto"
   },
   "header": {
-    "cta": "Agendar una llamada",
+    "cta": "Reservar una llamada",
     "navigation": "Navegación principal",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú"
@@ -24,27 +24,33 @@
     "es": "Español",
     "switchTo": "Cambiar idioma a"
   },
+  "theme": {
+    "darkMode": "Modo oscuro"
+  },
   "footer": {
     "description": "Consultoría ficticia de ingeniería industrial y operaciones para industria pesada. Creada como demo de portafolio.",
     "legal": "Contenido de demostración ficticio. Ferrowind Partners no es una empresa real y no tiene relación con ningún operador real.",
     "columns": {
       "company": "Empresa",
-      "explore": "Explorar",
-      "legal": "Legal"
+      "legal": "Legal",
+      "office": "Oficina"
+    },
+    "office": {
+      "addressLines": ["1200 Foundry Way, Oficina 400", "Pittsburgh, PA 15222"]
     },
     "privacy": "Privacidad",
     "terms": "Términos"
   },
   "common": {
-    "bookCall": "Agendar una llamada",
-    "viewCaseStudies": "Ver casos prácticos",
+    "bookCall": "Reservar una llamada",
+    "viewCaseStudies": "Ver casos de éxito",
     "exploreServices": "Explorar servicios",
-    "readCaseStudy": "Leer caso práctico",
-    "allCaseStudies": "Todos los casos",
+    "readCaseStudy": "Leer caso de éxito",
+    "allCaseStudies": "Todos los casos de éxito",
     "home": "Inicio"
   },
   "caseStudies": {
-    "eyebrow": "Casos prácticos",
+    "eyebrow": "Casos de éxito",
     "before": "Antes",
     "after": "Después",
     "metrics": "Antes y después",
@@ -52,8 +58,8 @@
     "year": "Año",
     "client": "Cliente",
     "published": "Publicado",
-    "fictional": "Caso práctico ficticio para portafolio. Los nombres de clientes, plantas y resultados son inventados.",
-    "read": "Leer caso práctico",
+    "fictional": "Caso de éxito ficticio para portafolio. Los nombres de clientes, plantas y resultados son inventados.",
+    "read": "Leer caso de éxito",
     "ctaTitle": "¿Tienes una restricción así?",
     "ctaDescription": "Trae la línea y la métrica. Empezaremos con un diagnóstico corto."
   },
@@ -78,7 +84,14 @@
     "submit": "Enviar mensaje",
     "submitting": "Enviando...",
     "success": "¡Gracias! Hemos recibido tu mensaje. Te contactaremos pronto.",
-    "error": "Algo salió mal. Inténtalo de nuevo."
+    "error": "Algo salió mal. Inténtalo de nuevo.",
+    "validation": {
+      "name": "Introduce tu nombre.",
+      "email": "Introduce un correo electrónico válido.",
+      "company": "El nombre de la empresa es demasiado largo.",
+      "message": "Cuéntanos un poco más (al menos 10 caracteres).",
+      "consent": "Acepta la política de privacidad para continuar."
+    }
   },
   "legal": {
     "updated": "Última actualización",

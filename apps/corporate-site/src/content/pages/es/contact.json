@@ -26,7 +26,7 @@
     },
     {
       "label": "Oficina",
-      "value": "1200 Foundry Way, Suite 400, Pittsburgh, PA 15222"
+      "value": "1200 Foundry Way, Oficina 400, Pittsburgh, PA 15222"
     },
     {
       "label": "Horario",
@@ -35,6 +35,6 @@
   ],
   "cta": {
     "title": "¿Prefieres ver el trabajo primero?",
-    "description": "Los casos prácticos muestran cómo acotamos un proyecto y cómo es el traspaso."
+    "description": "Los casos de éxito muestran cómo acotamos un proyecto y cómo es el traspaso."
   }
 }

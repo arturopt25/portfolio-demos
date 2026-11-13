@@ -5,22 +5,22 @@ sector: "Metales primarios"
 year: "2025"
 publishedAt: "2025-09-18"
 order: 1
-summary: "Caso práctico ficticio de una fundición: recuperar capacidad en la línea de colada corrigiendo cambios y desperdicio, sin un horno nuevo."
+summary: "Caso de éxito ficticio de una fundición: recuperar capacidad en la línea de colada corrigiendo cambios y desperdicio, sin un horno nuevo."
 metrics:
   - label: "Eficiencia general de los equipos"
-    before: "61%"
-    after: "78%"
+    before: { format: "percent", value: 0.61, fractionDigits: 0 }
+    after: { format: "percent", value: 0.78, fractionDigits: 0 }
   - label: "Tasa de desperdicio"
-    before: "8.4%"
-    after: "3.1%"
+    before: { format: "percent", value: 0.084, fractionDigits: 1 }
+    after: { format: "percent", value: 0.031, fractionDigits: 1 }
   - label: "Tiempo de cambio"
-    before: "42 min"
-    after: "18 min"
+    before: { format: "number", value: 42, suffix: " min" }
+    after: { format: "number", value: 18, suffix: " min" }
 ---
 
 ## Contexto
 
-Brackenhill Metals (ficticio) opera una fundición de 140.000 toneladas al año con tres líneas de colada. La eficiencia general de los equipos había caído al 61%, el desperdicio superaba el 8% y el equipo preparaba una solicitud de capital para un cuarto horno.
+Brackenhill Metals (ficticio) opera una fundición de 140.000 toneladas al año con tres líneas de colada. La eficiencia general de los equipos había caído al 61 %, el desperdicio superaba el 8 % y el equipo preparaba una solicitud de capital para un cuarto horno.
 
 El gerente de planta sospechaba que el horno era la restricción. Los datos de producción sugerían otra cosa: la línea perdía más tiempo entre coladas que durante ellas.
 
@@ -28,16 +28,16 @@ El gerente de planta sospechaba que el horno era la restricción. Los datos de p
 
 Un diagnóstico de dos semanas combinó estudios de tiempos, video de cambios y un Pareto de desperdicio por aleación y turno.
 
-- El 38% del retraso de cambio era espera de herramientas y verificaciones de precalentamiento que podían ejecutarse en paralelo.
-- Dos aleaciones concentraban el 61% del desperdicio, ambas ligadas a una verificación de temperatura previa a la colada que faltaba.
+- El 38 % del retraso de cambio era espera de herramientas y verificaciones de precalentamiento que podían ejecutarse en paralelo.
+- Dos aleaciones concentraban el 61 % del desperdicio, ambas ligadas a una verificación de temperatura previa a la colada que faltaba.
 - La programación agrupaba aleaciones de una forma que obligaba a limpiezas innecesarias.
 
 Movimos el precalentamiento a una estación paralela, creamos una lista de preparación externa y cambiamos la regla de programación para agrupar aleaciones compatibles. No se pidió ningún horno.
 
 ## Resultados
 
-- La eficiencia general pasó de 61% a 78% en cuatro meses.
-- El desperdicio cayó de 8.4% a 3.1%.
+- La eficiencia general pasó de 61 % a 78 % en cuatro meses.
+- El desperdicio cayó de 8,4 % a 3,1 %.
 - El tiempo de cambio bajó de 42 a 18 minutos.
 
 La solicitud de capital se retiró. La planta invirtió aproximadamente 180.000 dólares (ficticios) en utillajes, una estación de precalentamiento y capacitación de operadores.

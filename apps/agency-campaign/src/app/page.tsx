@@ -3,6 +3,7 @@ import { faqJsonLd, organizationJsonLd, websiteJsonLd } from "@folio/seo";
 
 import { LeadFormSection } from "@/components/lead-form-section";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { ThemeShowcase } from "@/components/theme-showcase";
 import { brand } from "@/content/brand";
 import {
   benefits,
@@ -12,7 +13,7 @@ import {
   sectionIds,
   testimonials,
 } from "@/content/campaign";
-import { HowItWorks, OfferTeaser, StatsStrip, ThemeShowcase } from "@/sections/page-sections";
+import { HowItWorks, OfferTeaser, StatsStrip } from "@/sections/page-sections";
 
 const organization = organizationJsonLd({
   name: brand.name,

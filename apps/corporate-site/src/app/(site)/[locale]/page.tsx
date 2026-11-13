@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 import { Cta, Features, Hero, Section, Testimonials } from "@folio/ui";
 
+import { PlantIllustration } from "@/components/plant-illustration";
 import { ServiceIcon } from "@/components/service-icon";
 import { CaseStudyGrid } from "@/sections/case-study-grid";
 import { ClientsStrip } from "@/sections/clients-strip";
@@ -60,16 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           label: dictionary.common.viewCaseStudies,
           href: `/${locale}/case-studies/`,
         }}
-        media={
-          <Image
-            src="/illustrations/plant.svg"
-            alt=""
-            width={1200}
-            height={675}
-            priority
-            className="h-full w-full object-cover"
-          />
-        }
+        media={<PlantIllustration locale={locale} />}
       />
 
       <ClientsStrip title={page.clients.title} items={page.clients.items} />
@@ -86,7 +77,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         }))}
       />
 
-      <StatsSection stats={page.stats} />
+      <StatsSection stats={page.stats} locale={locale} />
 
       <ProcessSection content={page.process} />
 

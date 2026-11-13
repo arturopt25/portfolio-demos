@@ -1,12 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
+  createContactFormSchema,
   emptyContactFormValues,
-  contactFormSchema,
+  type ContactFormValidationMessages,
   type ContactFormValues,
 } from "../lib/contact-schema";
 import { cn } from "../lib/utils";
@@ -24,6 +25,8 @@ export type ContactFormLabels = {
   submitting: string;
   success: string;
   error: string;
+  /** Optional localized validation messages. Defaults are English. */
+  validation?: ContactFormValidationMessages;
 };
 
 const defaultLabels: ContactFormLabels = {
@@ -61,6 +64,10 @@ export function ContactForm({
   const formId = useId();
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+  const schema = useMemo(
+    () => createContactFormSchema(labelOverrides?.validation),
+    [labelOverrides?.validation],
+  );
 
   const {
     register,
@@ -68,7 +75,7 @@ export function ContactForm({
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(schema),
     defaultValues: emptyContactFormValues,
     mode: "onBlur",
   });

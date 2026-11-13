@@ -19,6 +19,10 @@ export type HeroProps = {
   secondaryCta?: CtaLink;
   media?: ReactNode;
   mediaAspect?: "video" | "square" | "wide";
+  /** Extra classes for the media frame, for example hiding it on mobile. */
+  mediaClassName?: string;
+  /** Vertical alignment of the text and media columns. Defaults to center. */
+  align?: "center" | "start";
   compact?: boolean;
   className?: string;
 };
@@ -39,6 +43,8 @@ export function Hero({
   secondaryCta,
   media,
   mediaAspect = "video",
+  mediaClassName,
+  align = "center",
   compact = false,
   className,
 }: HeroProps) {
@@ -62,7 +68,8 @@ export function Hero({
         {anchor}
         <div
           className={cn(
-            "grid items-center gap-10",
+            "grid gap-10",
+            align === "start" ? "items-start" : "items-center",
             hasMedia && !isCentered && "lg:grid-cols-2 lg:gap-16",
             isCentered && "mx-auto max-w-3xl text-center",
           )}
@@ -124,6 +131,7 @@ export function Hero({
                 "w-full overflow-hidden rounded-xl border border-border bg-elevated shadow-card",
                 aspectClasses[mediaAspect],
                 isCentered && "mt-10",
+                mediaClassName,
               )}
             >
               {media}

@@ -2,7 +2,8 @@ import { brand } from "@/content/brand";
 import { getDictionary } from "@/lib/dictionary";
 
 export default function RootRedirectPage() {
-  const dictionary = getDictionary("en");
+  const english = getDictionary("en");
+  const spanish = getDictionary("es");
 
   return (
     <>
@@ -17,16 +18,21 @@ export default function RootRedirectPage() {
           {brand.name}
         </p>
         <h1 className="font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-          {dictionary.redirect.title}
+          <span lang="en">{english.redirect.title}</span>
+          <span aria-hidden="true"> / </span>
+          <span lang="es">{spanish.redirect.title}</span>
         </h1>
-        <p className="text-base leading-7 text-muted">{dictionary.redirect.description}</p>
+        <p className="text-base leading-7 text-muted">
+          <span lang="en">{english.redirect.description}</span>{" "}
+          <span lang="es">{spanish.redirect.description}</span>
+        </p>
 
         <div className="mt-2 flex flex-wrap gap-3">
           <a
             href="/en/"
             className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-fg transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            {dictionary.language.en}
+            {english.language.en}
           </a>
           <a
             href="/es/"
@@ -34,7 +40,7 @@ export default function RootRedirectPage() {
             lang="es"
             className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-elevated px-5 text-sm font-semibold text-fg transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            {dictionary.language.es}
+            {spanish.language.es}
           </a>
         </div>
       </main>

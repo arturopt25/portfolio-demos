@@ -1,9 +1,38 @@
+import {
+  buildThemeScript as buildSharedThemeScript,
+  isTheme as isSharedTheme,
+  normalizeTheme as normalizeSharedTheme,
+} from "@folio/ui/theme";
+
 export const THEMES = ["default", "dark", "bold"] as const;
 
 export type Theme = (typeof THEMES)[number];
 
+export const DEFAULT_THEME: Theme = "default";
+export const THEME_STORAGE_KEY = "catalyst-theme";
+export const CONSENT_STORAGE_KEY = "catalyst-consent";
+
+/** `default` is the attribute-less :root palette; dark and bold use data-theme. */
+const THEME_ATTRIBUTES: Record<Theme, string | null> = {
+  default: null,
+  dark: "dark",
+  bold: "bold",
+};
+
+const THEME_COLORS: Record<Theme, string> = {
+  default: "#ffffff",
+  dark: "#020617",
+  bold: "#0b0b0f",
+};
+
+const COLOR_SCHEMES: Record<Theme, "light" | "dark"> = {
+  default: "light",
+  dark: "dark",
+  bold: "dark",
+};
+
 export function isTheme(value: string | null | undefined): value is Theme {
-  return value !== null && value !== undefined && THEMES.includes(value as Theme);
+  return isSharedTheme(value, THEMES);
 }
 
 /**
@@ -12,19 +41,24 @@ export function isTheme(value: string | null | undefined): value is Theme {
  */
 export function normalizeTheme(
   value: string | null | undefined,
-  fallback: Theme = "default",
+  fallback: Theme = DEFAULT_THEME,
 ): Theme {
-  return isTheme(value) ? value : fallback;
+  return normalizeSharedTheme(value, THEMES, fallback);
 }
 
 /**
  * Minimal synchronous script for <head>. It runs before first paint, validates
- * `?theme=` against the allowlist, and never writes to storage. Invalid values
- * fall back to the build-time default.
+ * `?theme=` against the allowlist, and reads a remembered theme only when
+ * consent has already been granted. It never writes to storage.
  */
 export function buildThemeScript(defaultTheme: Theme): string {
-  const fallback = JSON.stringify(defaultTheme);
-  const allowed = JSON.stringify(THEMES);
-
-  return `(function(){try{var d=${fallback},a=${allowed},p=new URLSearchParams(location.search).get("theme"),t=a.indexOf(p)>-1?p:d,e=document.documentElement;if(t==="default"){e.removeAttribute("data-theme")}else{e.setAttribute("data-theme",t)}}catch(e){}})();`;
+  return buildSharedThemeScript({
+    themes: THEMES,
+    defaultTheme,
+    attributes: THEME_ATTRIBUTES,
+    storageKey: THEME_STORAGE_KEY,
+    consentKey: CONSENT_STORAGE_KEY,
+    colorSchemes: COLOR_SCHEMES,
+    themeColors: THEME_COLORS,
+  });
 }

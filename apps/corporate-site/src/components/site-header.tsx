@@ -2,11 +2,18 @@
 
 import { usePathname } from "next/navigation";
 
-import { Header, type NavLink } from "@folio/ui";
+import { Header, ThemeToggle, type NavLink } from "@folio/ui";
 
 import type { NavigationItem } from "@/lib/content-adapter";
 import type { Dictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
+import {
+  COLOR_SCHEMES,
+  CONSENT_STORAGE_KEY,
+  THEME_ATTRIBUTES,
+  THEME_COLORS,
+  THEME_STORAGE_KEY,
+} from "@/lib/theme";
 
 import { BrandMark } from "./brand-mark";
 import { LanguageSwitcher } from "./language-switcher";
@@ -48,7 +55,19 @@ export function SiteHeader({ locale, brandName, links, dictionary }: SiteHeaderP
       brand={<BrandMark name={brandName} />}
       brandHref={homeHref}
       links={navLinks}
-      actions={<LanguageSwitcher locale={locale} labels={dictionary.language} />}
+      actions={
+        <>
+          <LanguageSwitcher locale={locale} labels={dictionary.language} />
+          <ThemeToggle
+            attributes={THEME_ATTRIBUTES}
+            storageKey={THEME_STORAGE_KEY}
+            consentKey={CONSENT_STORAGE_KEY}
+            colorSchemes={COLOR_SCHEMES}
+            themeColors={THEME_COLORS}
+            labels={{ label: dictionary.theme.darkMode }}
+          />
+        </>
+      }
       cta={{
         label: dictionary.header.cta,
         href: `/${locale}/contact/`,

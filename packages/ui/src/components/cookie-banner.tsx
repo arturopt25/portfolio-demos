@@ -50,7 +50,7 @@ export function CookieBanner({
   return (
     <div
       role="region"
-      aria-label="Cookie consent"
+      aria-label={title}
       className={cn("fixed inset-x-0 bottom-0 z-50 p-4", className)}
     >
       <div className="mx-auto max-w-3xl rounded-lg border border-border bg-elevated p-5 shadow-float">

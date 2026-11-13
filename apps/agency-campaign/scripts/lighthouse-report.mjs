@@ -33,6 +33,7 @@ for (const file of files) {
     row[category] = Math.round((report.categories?.[category]?.score ?? 0) * 100);
   }
 
+  row.cls = Number((report.audits?.["cumulative-layout-shift"]?.numericValue ?? 0).toFixed(4));
   rows.push(row);
   groups.set(key, rows);
 }
@@ -44,6 +45,9 @@ for (const [key, rows] of groups) {
     const values = rows.map((row) => row[category]).sort((a, b) => a - b);
     medians[category] = values[Math.floor(values.length / 2)];
   }
+
+  const clsValues = rows.map((row) => row.cls).sort((a, b) => a - b);
+  medians.cls = clsValues[Math.floor(clsValues.length / 2)];
 
   console.log(`\n${key}`);
   console.table(rows);
