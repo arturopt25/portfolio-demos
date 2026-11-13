@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Casefern">
   <rect width="64" height="64" rx="14" fill="#4338ca" />
   <path
-    d="M32 12c9.5 7.2 14 15.4 14 23.2C46 46.4 39.7 53 32 53s-14-6.6-14-17.8C18 27.4 22.5 19.2 32 12Z"
+    d="M32 8.5c11.5 8.5 17 18.7 17 28.3C49 47.7 41.5 55 32 55s-17-7.3-17-18.2C15 27.2 20.5 17 32 8.5Z"
     fill="#eef2ff"
   />
   <path
-    d="M32 19v27M32 27l-6-5M32 34l7-6M32 41l-7-5"
+    d="M32 18v30M32 27l-7.5-6M32 35l8.5-6.8M32 44l-8.5-6.5"
     fill="none"
     stroke="#4338ca"
-    stroke-width="2.5"
+    stroke-width="3"
     stroke-linecap="round"
   />
 </svg>
