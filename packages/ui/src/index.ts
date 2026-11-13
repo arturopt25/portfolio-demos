@@ -1,4 +1,6 @@
 export { Badge } from "./components/badge";
+export { BrandMark } from "./components/brand-mark";
+export type { BrandMarkProps, BrandMarkSize } from "./components/brand-mark";
 export {
   Button,
   LinkButton,
