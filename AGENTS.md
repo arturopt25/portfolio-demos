@@ -156,6 +156,22 @@ When changing anything in `packages/ui`:
 - **LHCI per theme:** group reports by `pathname + search` so light and dark
   runs are not merged. The shared report script prints CLS per run.
 
+## Lessons from Phase B (keep these patterns)
+
+- **Shared logo lockup:** `BrandMark` in `@folio/ui` renders a themed icon tile
+  plus a heavier wordmark. Keep each app's `app/icon.svg` in sync with the header
+  mark.
+- **Hero media options:** `Hero` accepts `align="start"` and `mediaClassName`.
+  Use `hidden lg:block` for decorative media that should not affect mobile LCP.
+- **Themed inline SVG:** the tokens are RGB triples, so use
+  `rgb(var(--color-*))` in SVG CSS or inline styles. Plain
+  `fill="var(--color-*)"` resolves to black.
+- **Server-render decorative art:** pass the illustration from the server page
+  into the client hero as a `media` prop instead of importing it into the client
+  component.
+- **Phase B CLS:** the `?v=b` swap remains 0.0123; the illustration is hidden on
+  mobile and does not add CLS.
+
 ## Definition of Done
 
 - [ ] `pnpm lint`, `pnpm typecheck`, and `pnpm build` pass.
