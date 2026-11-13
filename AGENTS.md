@@ -172,6 +172,23 @@ When changing anything in `packages/ui`:
 - **Phase B CLS:** the `?v=b` swap remains 0.0123; the illustration is hidden on
   mobile and does not add CLS.
 
+## Lessons from Phase C (keep these patterns)
+
+- **Palette radiogroup:** the hero swatches are `role="radio"` buttons in a
+  `radiogroup` with roving tabindex. Arrow keys move and select; Home/End jump;
+  Enter/Space select. Each swatch keeps `data-theme` so its colors stay true.
+- **URL merge:** use `new URL(...)` plus `searchParams` and
+  `history.replaceState` to preserve the hash and UTM/click-id params. Removing
+  the `theme` param means the default palette.
+- **Pre-hydration active swatch:** drive the active ring from the page theme via
+  CSS (`html[data-theme="dark"] [data-swatch="dark"]`) so it is correct before
+  hydration.
+- **Consent-gated palette persistence:** write `catalyst-theme` only when
+  `catalyst-consent === "granted"`; otherwise remove it. Emit the consent-gated
+  `theme_select` event.
+- **One control:** the old footer theme link-list was removed; the hero
+  radiogroup is the single palette control.
+
 ## Definition of Done
 
 - [ ] `pnpm lint`, `pnpm typecheck`, and `pnpm build` pass.
