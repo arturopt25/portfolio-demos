@@ -85,8 +85,8 @@ Static build, mobile 393×852, 3 runs per URL, medians:
 | `/?v=b`            |          99 |           100 |            100 | 100 | 0.0123 |
 | `/?v=b&theme=dark` |         100 |           100 |            100 | 100 | 0.0123 |
 
-Performance 99 runs had TBT 92–105 ms; FCP/LCP (~760 ms) and CLS are unchanged
-from Phase A. All categories remain above the 95 target. The illustration is
+The 99 runs had TBT 98–114 ms; FCP/LCP (~760 ms) and CLS are unchanged from
+Phase A. All categories remain above the 95 target. The illustration is
 `display:none` below `lg`, so it is not painted in the mobile run.
 
 ## Reproduce manually
