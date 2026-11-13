@@ -56,7 +56,9 @@ export { cn } from "./lib/utils";
 export { buildThemeScript, isTheme, normalizeTheme, type ThemeScriptOptions } from "./lib/theme";
 export {
   contactFormSchema,
+  createContactFormSchema,
   emptyContactFormValues,
+  type ContactFormValidationMessages,
   type ContactFormValues,
 } from "./lib/contact-schema";
 export type { CtaLink, Media } from "./lib/types";

@@ -40,6 +40,7 @@ export function Testimonials({
               <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
                 {item.avatar ?? (
                   <span
+                    role="presentation"
                     aria-hidden="true"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-soft text-sm font-bold text-primary"
                   >
