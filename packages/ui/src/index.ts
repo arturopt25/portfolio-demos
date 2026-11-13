@@ -36,7 +36,9 @@ export {
   GaugeIcon,
   LeafIcon,
   MenuIcon,
+  MoonIcon,
   SparkIcon,
+  SunIcon,
 } from "./components/icons";
 export { JsonLd } from "./components/json-ld";
 export type { JsonLdProps } from "./components/json-ld";
@@ -46,7 +48,10 @@ export { Section, SectionHeader, SectionHeading } from "./components/section";
 export type { SectionHeadingProps, SectionProps } from "./components/section";
 export { Testimonials } from "./components/testimonials";
 export type { TestimonialItem, TestimonialsProps } from "./components/testimonials";
+export { ThemeToggle } from "./components/theme-toggle";
+export type { ThemeToggleProps } from "./components/theme-toggle";
 export { cn } from "./lib/utils";
+export { buildThemeScript, isTheme, normalizeTheme, type ThemeScriptOptions } from "./lib/theme";
 export {
   contactFormSchema,
   emptyContactFormValues,
