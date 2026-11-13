@@ -116,6 +116,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   submitting: dictionary.form.submitting,
                   success: dictionary.form.success,
                   error: dictionary.form.error,
+                  validation: {
+                    name: dictionary.form.validation.name,
+                    email: dictionary.form.validation.email,
+                    company: dictionary.form.validation.company,
+                    message: dictionary.form.validation.message,
+                    consent: dictionary.form.validation.consent,
+                  },
                 }}
               />
             </div>

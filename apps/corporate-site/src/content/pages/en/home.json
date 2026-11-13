@@ -31,19 +31,19 @@
   },
   "stats": [
     {
-      "value": "28%",
+      "value": { "format": "percent", "value": 0.28, "fractionDigits": 0 },
       "label": "Average reduction in unplanned downtime across fictional demo engagements"
     },
     {
-      "value": "120+",
+      "value": { "format": "number", "value": 120, "suffix": "+" },
       "label": "Fictional site assessments completed"
     },
     {
-      "value": "14 yrs",
+      "value": { "format": "number", "value": 14, "suffix": " yrs" },
       "label": "Average partner experience in heavy industry"
     },
     {
-      "value": "3",
+      "value": { "format": "number", "value": 3 },
       "label": "Continents served by the fictional team"
     }
   ],

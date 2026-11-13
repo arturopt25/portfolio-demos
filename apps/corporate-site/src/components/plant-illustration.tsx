@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/i18n";
+
 /**
  * Inline, themed version of the industrial plant illustration.
  *
@@ -5,7 +7,12 @@
  * dark. It is decorative: the hero already carries the text content, so the
  * SVG is hidden from assistive technology.
  */
-export function PlantIllustration() {
+export function PlantIllustration({ locale }: { locale: Locale }) {
+  const labels =
+    locale === "es"
+      ? { intake: "ENTRADA", process: "PROCESO", output: "SALIDA" }
+      : { intake: "INTAKE", process: "PROCESS", output: "OUTPUT" };
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -223,13 +230,13 @@ export function PlantIllustration() {
         letterSpacing="3"
       >
         <text x="160" y="645">
-          INTAKE
+          {labels.intake}
         </text>
         <text x="664" y="645">
-          PROCESS
+          {labels.process}
         </text>
         <text x="936" y="645">
-          OUTPUT
+          {labels.output}
         </text>
       </g>
 

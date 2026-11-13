@@ -89,21 +89,20 @@ export default async function LocaleLayout({
         { label: dictionary.nav.home, href: `/${locale}/` },
         { label: dictionary.nav.services, href: `/${locale}/services/` },
         { label: dictionary.nav.caseStudies, href: `/${locale}/case-studies/` },
+        { label: dictionary.nav.contact, href: `/${locale}/contact/` },
       ],
     },
     {
-      title: dictionary.footer.columns.explore,
+      title: dictionary.footer.columns.legal,
       links: [
-        { label: dictionary.nav.contact, href: `/${locale}/contact/` },
         { label: dictionary.footer.privacy, href: `/${locale}/privacy/` },
         { label: dictionary.footer.terms, href: `/${locale}/terms/` },
       ],
     },
     {
-      title: dictionary.contact.office,
+      title: dictionary.footer.columns.office,
       links: [
-        { label: brand.addressLines[0] ?? "" },
-        { label: brand.addressLines[1] ?? "" },
+        ...dictionary.footer.office.addressLines.map((line) => ({ label: line })),
         { label: brand.email, href: `mailto:${brand.email}` },
         { label: brand.phone, href: `tel:${brand.phoneHref}` },
       ],

@@ -32,8 +32,11 @@
     "legal": "Fictional demo content. Ferrowind Partners is not a real company and has no affiliation with any real operator.",
     "columns": {
       "company": "Company",
-      "explore": "Explore",
-      "legal": "Legal"
+      "legal": "Legal",
+      "office": "Office"
+    },
+    "office": {
+      "addressLines": ["1200 Foundry Way, Suite 400", "Pittsburgh, PA 15222"]
     },
     "privacy": "Privacy",
     "terms": "Terms"
@@ -81,7 +84,14 @@
     "submit": "Send message",
     "submitting": "Sending...",
     "success": "Thanks! Your message has been received. We will be in touch shortly.",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "validation": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email address.",
+      "company": "Company name is too long.",
+      "message": "Please tell us a little more (at least 10 characters).",
+      "consent": "Please accept the privacy policy to continue."
+    }
   },
   "legal": {
     "updated": "Last updated",

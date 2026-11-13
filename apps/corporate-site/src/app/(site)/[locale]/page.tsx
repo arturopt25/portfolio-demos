@@ -60,7 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           label: dictionary.common.viewCaseStudies,
           href: `/${locale}/case-studies/`,
         }}
-        media={<PlantIllustration />}
+        media={<PlantIllustration locale={locale} />}
       />
 
       <ClientsStrip title={page.clients.title} items={page.clients.items} />
@@ -77,7 +77,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         }))}
       />
 
-      <StatsSection stats={page.stats} />
+      <StatsSection stats={page.stats} locale={locale} />
 
       <ProcessSection content={page.process} />
 

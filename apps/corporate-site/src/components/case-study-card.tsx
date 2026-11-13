@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRightIcon } from "@folio/ui";
 
 import type { CaseStudySummary } from "@/lib/content-adapter";
+import { formatMetric } from "@/lib/format";
 import { localizePath, type Locale } from "@/lib/i18n";
 
 type CaseStudyCardProps = {
@@ -44,12 +45,12 @@ export function CaseStudyCard({ study, locale, readLabel, metricLabels }: CaseSt
             <dt className="text-muted">{metric.label}</dt>
             <dd className="shrink-0 font-semibold tabular-nums text-fg">
               <span className="sr-only">{metricLabels.before}: </span>
-              <span className="font-normal text-muted">{metric.before}</span>
+              <span className="font-normal text-muted">{formatMetric(metric.before, locale)}</span>
               <span aria-hidden="true" className="mx-1 text-muted">
                 →
               </span>
               <span className="sr-only">{metricLabels.after}: </span>
-              {metric.after}
+              {formatMetric(metric.after, locale)}
             </dd>
           </div>
         ))}

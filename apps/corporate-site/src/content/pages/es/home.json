@@ -27,23 +27,23 @@
   "caseStudies": {
     "eyebrow": "Trabajo seleccionado",
     "title": "Tres restricciones, tres correcciones medidas.",
-    "description": "Cada caso práctico es ficticio y muestra la métrica de antes y después que justificó el trabajo."
+    "description": "Cada caso de éxito es ficticio y muestra la métrica de antes y después que justificó el trabajo."
   },
   "stats": [
     {
-      "value": "28%",
+      "value": { "format": "percent", "value": 0.28, "fractionDigits": 0 },
       "label": "Reducción media de paradas no planificadas en proyectos ficticios de la demo"
     },
     {
-      "value": "120+",
+      "value": { "format": "number", "value": 120, "suffix": "+" },
       "label": "Evaluaciones de planta ficticias completadas"
     },
     {
-      "value": "14 años",
+      "value": { "format": "number", "value": 14, "suffix": " años" },
       "label": "Experiencia media de los socios en industria pesada"
     },
     {
-      "value": "3",
+      "value": { "format": "number", "value": 3 },
       "label": "Continentes atendidos por el equipo ficticio"
     }
   ],

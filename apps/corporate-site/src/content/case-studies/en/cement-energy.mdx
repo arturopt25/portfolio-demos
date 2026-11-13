@@ -8,14 +8,14 @@ order: 3
 summary: "A fictional cement case study: reducing energy per tonne with metering, idle-load removal, and a sequenced heat-recovery project."
 metrics:
   - label: "Energy per tonne"
-    before: "Baseline"
-    after: "-11%"
+    before: { format: "text", text: "Baseline" }
+    after: { format: "percent", value: -0.11, fractionDigits: 0, signed: true }
   - label: "CO2e avoided"
-    before: "0"
-    after: "9,400 t/yr"
+    before: { format: "number", value: 0 }
+    after: { format: "number", value: 9400, suffix: " t/yr" }
   - label: "Program payback"
-    before: "Unknown"
-    after: "2.6 years"
+    before: { format: "text", text: "Unknown" }
+    after: { format: "number", value: 2.6, fractionDigits: 1, suffix: " years" }
 ---
 
 ## Context
