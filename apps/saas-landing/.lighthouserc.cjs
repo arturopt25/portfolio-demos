@@ -3,7 +3,7 @@ module.exports = {
   ci: {
     collect: {
       staticDistDir: "./dist",
-      url: ["/"],
+      url: ["/", "/?theme=dark", "/?v=b", "/?v=b&theme=dark"],
       numberOfRuns: 3,
       settings: {
         formFactor: "mobile",

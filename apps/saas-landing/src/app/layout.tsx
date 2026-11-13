@@ -6,11 +6,15 @@ import "./globals.css";
 
 import { createMetadata } from "@folio/seo";
 
+import { buildAppThemeScript } from "@/lib/theme";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
+
+const themeScript = buildAppThemeScript();
 
 const siteName = "Casefern";
 const baseUrl = "https://casefern-demo.pages.dev";
@@ -31,7 +35,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-sans">{children}</body>
     </html>
   );

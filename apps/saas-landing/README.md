@@ -12,12 +12,24 @@ not a real product; all names, pricing, and claims are demo content.
 ## What this demo shows
 
 - Hero A/B copy via `?v=a` / `?v=b`
+- Light and dark themes with a keyboard-accessible header toggle
 - Social proof, features, monthly/annual pricing, FAQ, and lead form
 - Shared `@folio/ui` components and design tokens
 - Consent-gated analytics with a no-op default
 - Mock form-submission adapter with an inline success state
 - Metadata, `SoftwareApplication` + `FAQPage` JSON-LD, and a generated OG image
 - Static pages for `/privacy/` and `/terms/`
+
+## Themes
+
+Light is the default. `?theme=dark` is shareable and applies before first paint.
+The header toggle changes the theme immediately, updates the URL with
+`history.replaceState`, and writes the choice to `localStorage` (`casefern-theme`)
+only after the cookie banner has granted consent (`folio-consent`). Before
+consent, the theme is never persisted; it lives only in the URL.
+
+`color-scheme` and the `theme-color` meta tag follow the active theme. Canonical
+and `og:url` never include `?theme=` or `?v=`.
 
 ## Lighthouse metrics
 
@@ -31,6 +43,20 @@ Mobile Lighthouse, static production build, 393×852, 3 runs.
 | SEO            |                      100 |           100 |   100 |   100 | **100** |     0 |
 
 Target: **≥95** in every category. All categories meet the target.
+
+### Phase A theme verification
+
+Static build, mobile 393×852, 3 runs per URL, medians:
+
+| URL                | Performance | Accessibility | Best Practices | SEO | CLS    |
+| ------------------ | ----------: | ------------: | -------------: | --: | ------ |
+| `/`                |         100 |           100 |            100 | 100 | 0      |
+| `/?theme=dark`     |         100 |           100 |            100 | 100 | 0      |
+| `/?v=b`            |         100 |           100 |            100 | 100 | 0.0123 |
+| `/?v=b&theme=dark` |         100 |           100 |            100 | 100 | 0.0123 |
+
+The `?v=b` CLS comes from the existing client-side headline swap, not the theme
+toggle. It is unchanged from the previous baseline (0.012 at three decimals).
 
 ## Reproduce manually
 
@@ -80,6 +106,10 @@ path, or run Lighthouse manually with `--port` against a Chrome started with
   Cloudflare Pages URL after deployment.
 - `robots.txt` and `sitemap.xml` are not implemented in this demo. Add Next.js
   metadata routes if the demo is attached to a real domain.
+- Theme persistence is consent-gated. Without consent, the theme is shareable
+  through `?theme=` but is not remembered across navigation or reloads.
+- The OS color-scheme preference is intentionally ignored; light is always the
+  default until the visitor chooses dark.
 
 ## Manual checks
 

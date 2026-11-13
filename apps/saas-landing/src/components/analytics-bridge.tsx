@@ -2,9 +2,13 @@
 
 import { useEffect } from "react";
 
-import { trackEvent } from "@folio/ui";
+import { configureAnalytics, noopAnalyticsAdapter, trackEvent } from "@folio/ui";
 
 export function AnalyticsBridge() {
+  useEffect(() => {
+    configureAnalytics(noopAnalyticsAdapter);
+  }, []);
+
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       const target = event.target;
