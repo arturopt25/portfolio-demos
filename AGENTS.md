@@ -31,8 +31,9 @@ Current demo brands:
 - **Packages:** `@folio/config`, `@folio/seo`, `@folio/ui`.
 - **Language:** TypeScript strict. Avoid `any`; add a narrow cast only with a comment.
 - **Styling:** Tailwind CSS **v3** (pinned), shared preset, CSS-variable design
-  tokens in `packages/config/tokens.css`. Light mode is active; dark tokens exist
-  but are not activated.
+  tokens in `packages/config/tokens.css`. All three apps ship light and dark
+  themes; light is the default and the OS preference is not followed
+  automatically.
 - **Components:** functional, named exports, semantic HTML, visible focus states.
 - **Forms:** use the shared `ContactForm` and form-submission adapter. The default
   adapter is a mock; real endpoints must be isolated inside the adapter.
@@ -137,6 +138,23 @@ When changing anything in `packages/ui`:
 - **Nested theme previews:** a swatch that should always show the light palette
   needs an explicit `[data-theme="default"]` token block. A nested element
   without a `data-theme` inherits the page's active theme.
+
+## Lessons from Phase A (keep these patterns)
+
+- **Shared theme script:** `buildThemeScript` in `@folio/ui/theme` validates
+  `?theme=` against an allowlist, applies `data-theme`, `color-scheme`, and the
+  `theme-color` meta before first paint, and is imported by all three apps.
+- **Consent-gated persistence:** a stored theme is only read when the app's
+  consent key is already `"granted"`. `ThemeToggle` writes the theme only after
+  consent. Keys: `casefern-theme`/`folio-consent`,
+  `ferrowind-theme`/`ferrowind-consent`, `catalyst-theme`/`catalyst-consent`.
+- **Query-free canonicals:** `?theme=` and `?v=` are runtime/shareable only.
+  Canonical and `og:url` must stay query-free; verify in the built HTML.
+- **Inline SVG for themed art:** external `<img>` SVGs cannot inherit page CSS
+  variables. Inline illustrations and use `var(--color-*)` (see Ferrowind's
+  plant illustration).
+- **LHCI per theme:** group reports by `pathname + search` so light and dark
+  runs are not merged. The shared report script prints CLS per run.
 
 ## Definition of Done
 
