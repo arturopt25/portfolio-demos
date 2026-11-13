@@ -30,7 +30,7 @@ export function LanguageSwitcher({ locale, labels }: LanguageSwitcherProps) {
             hrefLang={target}
             lang={target}
             aria-current={isCurrent ? "true" : undefined}
-            aria-label={`${labels.switchTo} ${labels[target]}`}
+            aria-label={isCurrent ? labels[target] : `${labels.switchTo} ${labels[target]}`}
             className={cn(
               "rounded-sm px-2 py-1 text-xs font-semibold uppercase tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               isCurrent ? "bg-primary text-primary-fg" : "text-muted hover:text-fg",
