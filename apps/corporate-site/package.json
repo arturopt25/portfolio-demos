@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "node scripts/check-i18n.mjs && tsc --noEmit",
     "lighthouse": "lhci autorun",
     "lighthouse:report": "node ./scripts/lighthouse-report.mjs",
     "start": "npx --yes serve dist -l 3100"
