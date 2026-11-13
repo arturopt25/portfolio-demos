@@ -69,8 +69,12 @@ that `src/app/layout.tsx` renders in `<head>`. The script runs before first pain
 3. sets or removes `data-theme` on `<html>`, and
 4. otherwise falls back to the build-time default.
 
-It never reads or writes localStorage or cookies. Browser verification with the
-static build measured **0.0000 CLS** for default, dark, and bold.
+The script applies `data-theme`, `color-scheme`, and the `theme-color` meta
+before paint. It never writes storage. A remembered theme is read from
+`localStorage` (`catalyst-theme`) only when consent (`catalyst-consent`) is
+already granted; before consent, the theme lives only in the URL and is
+shareable via `?theme=`. Browser verification with the static build measured
+**0.0000 CLS** for default, dark, and bold.
 
 The build-time default is `brand.defaultTheme` (`"default"`). Override it without
 touching code:
@@ -187,6 +191,14 @@ No category landed in the 90–94 range. One default-theme performance run score
 were collected with `/?theme=dark` and `/?theme=bold` against the same static
 export.
 
+### Phase A verification
+
+The shared theme script was re-run after the Phase A refactor. Dark and bold
+medians remain **100 / 100 / 100 / 100**. The default page measured
+**99 / 100 / 100 / 100** (runs 100/99/99; TBT 96–101.5 ms), which is TBT
+variance rather than a change in FCP, LCP, or CLS (all unchanged, CLS 0). The
+assertion threshold remains `0.95`.
+
 ## Verification performed
 
 - `?theme=default|dark|bold` applies the expected body colors; `?theme=evil`
@@ -230,8 +242,14 @@ post-deploy checklist.
   the default adapter. Wire a real provider where `configureAnalytics` is called.
 - **Session-scoped attribution.** `sessionStorage` is per tab and cleared when the
   tab closes. It is last-touch within the session, not a cross-device identity.
-- **URL-only theme selection.** The chosen theme is deliberately not persisted;
-  without `?theme=` the page returns to the build-time default.
+- **Consent-gated theme selection.** `?theme=` is always shareable. The chosen
+  theme is remembered in `localStorage` (`catalyst-theme`) only after consent
+  (`catalyst-consent`). Without consent, it is not persisted and the page
+  returns to the build-time default on the next navigation.
+- **OS preference is ignored.** The page starts from the build-time default, not
+  `prefers-color-scheme`.
+- **Palette previews are currently links.** Phase C replaces the hero preview
+  links with accessible radio-style controls and real-time switching.
 - **Click IDs are presence-only.** `gclid` and `fbclid` values are not kept, so
   this demo cannot support offline conversion uploads.
 - **English-only.** No locale segment; the corporate demo covers i18n.
