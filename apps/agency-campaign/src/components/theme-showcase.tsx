@@ -5,9 +5,20 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { CheckIcon, trackEvent } from "@folio/ui";
 
 import { brand } from "@/content/brand";
+import { normalizeTheme } from "@/lib/theme";
 
 const CONSENT_KEY = "catalyst-consent";
 const THEME_KEY = "catalyst-theme";
+
+/**
+ * When the build-time default is dark or bold, removing `?theme=` would fall
+ * back to that non-default palette. Selecting "Default" must therefore write an
+ * explicit `?theme=default` so the light palette wins.
+ */
+const BUILD_DEFAULT_THEME = normalizeTheme(
+  process.env.NEXT_PUBLIC_DEFAULT_THEME ?? brand.defaultTheme,
+  brand.defaultTheme,
+);
 
 const PALETTES = [
   { key: "default", label: "Default", themeColor: "#ffffff" },
@@ -81,7 +92,11 @@ export function ThemeShowcase() {
       const url = new URL(window.location.href);
 
       if (key === "default") {
-        url.searchParams.delete("theme");
+        if (BUILD_DEFAULT_THEME === "default") {
+          url.searchParams.delete("theme");
+        } else {
+          url.searchParams.set("theme", "default");
+        }
       } else {
         url.searchParams.set("theme", key);
       }

@@ -95,8 +95,11 @@ applies `data-theme`, `color-scheme`, and the `theme-color` meta immediately.
 
 The URL is updated with `history.replaceState`, preserving the hash and every
 other query parameter (`utm_*`, `gclid`, `fbclid`, etc.). Selecting **Default**
-removes the `theme` parameter; the absence of `theme` means the default palette.
-The read-only `?theme=default` form is still accepted on load.
+removes the `theme` parameter when the build default is also `default`; the
+absence of `theme` means the default palette. If the build default is `dark` or
+`bold`, selecting Default writes an explicit `?theme=default` so the light
+palette wins instead of falling back to the build default. The read-only
+`?theme=default` form is accepted in both cases.
 
 Each swatch keeps its own `data-theme`, so its colors stay true in every active
 page theme. The active ring follows the page theme via CSS, which avoids a
