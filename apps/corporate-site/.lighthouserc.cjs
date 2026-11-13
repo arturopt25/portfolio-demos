@@ -3,7 +3,14 @@ module.exports = {
   ci: {
     collect: {
       staticDistDir: "./dist",
-      url: ["/en/", "/en/case-studies/foundry-throughput/"],
+      url: [
+        "/en/",
+        "/en/?theme=dark",
+        "/es/",
+        "/es/?theme=dark",
+        "/en/case-studies/foundry-throughput/",
+        "/en/case-studies/foundry-throughput/?theme=dark",
+      ],
       numberOfRuns: 3,
       settings: {
         formFactor: "mobile",

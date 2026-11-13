@@ -24,6 +24,9 @@
     "es": "Español",
     "switchTo": "Cambiar idioma a"
   },
+  "theme": {
+    "darkMode": "Modo oscuro"
+  },
   "footer": {
     "description": "Consultoría ficticia de ingeniería industrial y operaciones para industria pesada. Creada como demo de portafolio.",
     "legal": "Contenido de demostración ficticio. Ferrowind Partners no es una empresa real y no tiene relación con ningún operador real.",

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { Inter } from "next/font/google";
@@ -17,6 +17,9 @@ import { contentAdapter } from "@/lib/content-adapter";
 import { getDictionary } from "@/lib/dictionary";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { pageUrl } from "@/lib/seo";
+import { buildAppThemeScript } from "@/lib/theme";
+
+const themeScript = buildAppThemeScript();
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,6 +28,12 @@ const inter = Inter({
 });
 
 export const dynamicParams = false;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -116,7 +125,10 @@ export default async function LocaleLayout({
   });
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-sans">
         <a href="#main" className="skip-link">
           {dictionary.a11y.skipToContent}

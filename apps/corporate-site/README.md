@@ -25,6 +25,19 @@ Both locales are generated at build time (`dynamicParams = false`):
 - `/` — meta-refresh redirect to `/en/` (plus `public/_redirects` for Cloudflare)
 - Unknown locale, slug, or path → branded `404.html`
 
+## Themes
+
+Light is the default. `?theme=dark` is shareable and applies before first paint.
+The header toggle changes the theme immediately, updates the URL with
+`history.replaceState`, and writes the choice to `localStorage`
+(`ferrowind-theme`) only after the cookie banner has granted consent
+(`ferrowind-consent`). Before consent, the theme is never persisted; it lives
+only in the URL.
+
+`color-scheme` and the `theme-color` meta tag follow the active theme. Canonical
+and `og:url` never include `?theme=`. The hero illustration is inline SVG and
+uses the shared color tokens, so it adapts to both palettes.
+
 ## What this demo shows
 
 - `[locale]` routing with `<html lang>` per locale and a keyboard-friendly
@@ -79,6 +92,23 @@ run. An earlier pass on the same page code measured 98 / 98 / 100 for
 performance (median 98); LCP varied between 0.9s and 2.3s, which is the only
 run-to-run variance observed. The final pass measured 100 in all three runs.
 
+### Phase A theme verification
+
+Static build, mobile 393×852, 3 runs per URL, medians:
+
+| URL                                               | Performance | Accessibility | Best Practices | SEO | CLS |
+| ------------------------------------------------- | ----------: | ------------: | -------------: | --: | --- |
+| `/en/`                                            |         100 |           100 |            100 | 100 | 0   |
+| `/en/?theme=dark`                                 |         100 |           100 |            100 | 100 | 0   |
+| `/es/`                                            |         100 |           100 |            100 | 100 | 0   |
+| `/es/?theme=dark`                                 |          99 |           100 |            100 | 100 | 0   |
+| `/en/case-studies/foundry-throughput/`            |         100 |           100 |            100 | 100 | 0   |
+| `/en/case-studies/foundry-throughput/?theme=dark` |         100 |           100 |            100 | 100 | 0   |
+
+The `/es/?theme=dark` performance median is 99 because TBT measured 92–105 ms
+across the three runs; FCP/LCP and CLS are identical to the light page. All
+categories remain above the 95 target.
+
 ## Reproduce
 
 ```bash
@@ -123,6 +153,12 @@ and `0.95` assertions in all four categories. It never uses the dev server.
   real site.
 - Analytics is a consent-gated no-op. No third-party provider is configured.
 - Spanish copy was written for the demo and is not a professional translation.
+- Theme persistence is consent-gated. Without consent, `?theme=dark` is
+  shareable but is not remembered across navigation or reloads.
+- The OS color-scheme preference is intentionally ignored; light is always the
+  default until the visitor chooses dark.
+- The hero illustration is inline SVG rather than an external image so it can
+  inherit theme tokens. It is decorative and hidden from assistive technology.
 - The content adapter reads local files with `node:fs` at build time. It is not
   edge-runtime compatible by design; swap in a CMS adapter if that changes.
 

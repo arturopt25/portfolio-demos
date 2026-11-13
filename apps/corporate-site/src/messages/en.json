@@ -24,6 +24,9 @@
     "es": "Español",
     "switchTo": "Switch language to"
   },
+  "theme": {
+    "darkMode": "Dark mode"
+  },
   "footer": {
     "description": "A fictional industrial engineering and operations consultancy for heavy industry. Built as a portfolio demo.",
     "legal": "Fictional demo content. Ferrowind Partners is not a real company and has no affiliation with any real operator.",
