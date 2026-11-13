@@ -4,7 +4,6 @@ import { brand } from "@/content/brand";
 import { footerColumns, navLinks, sectionIds } from "@/content/campaign";
 
 import { BrandMark } from "./brand-mark";
-import { ThemePreview } from "./theme-preview";
 
 export function SiteHeader() {
   return (
@@ -49,12 +48,9 @@ export function SiteFooter() {
       description={brand.demoNotice}
       columns={footerColumns}
       legal={
-        <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-xl">
-            Fictional demo content. No real company, client, or campaign is represented.
-          </p>
-          <ThemePreview />
-        </div>
+        <p className="max-w-xl">
+          Fictional demo content. No real company, client, or campaign is represented.
+        </p>
       }
     />
   );

@@ -202,9 +202,3 @@ export const footerColumns: FooterColumn[] = [
     ],
   },
 ];
-
-export const themePreviewLinks = [
-  { label: "Default", href: "?theme=default", key: "default" },
-  { label: "Dark", href: "?theme=dark", key: "dark" },
-  { label: "Bold", href: "?theme=bold", key: "bold" },
-] as const;
