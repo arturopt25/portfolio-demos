@@ -24,19 +24,21 @@ const groups = new Map();
 for (const file of files) {
   const report = JSON.parse(fs.readFileSync(path.join(reportDir, file), "utf8"));
   const rawUrl = report.finalDisplayedUrl ?? report.finalUrl ?? report.requestedUrl ?? "/";
-  const pathname = new URL(rawUrl).pathname;
-  const rows = groups.get(pathname) ?? [];
+  const url = new URL(rawUrl);
+  const key = `${url.pathname}${url.search}`;
+  const rows = groups.get(key) ?? [];
   const row = { run: rows.length + 1 };
 
   for (const category of CATEGORIES) {
     row[category] = Math.round((report.categories?.[category]?.score ?? 0) * 100);
   }
 
+  row.cls = Number((report.audits?.["cumulative-layout-shift"]?.numericValue ?? 0).toFixed(4));
   rows.push(row);
-  groups.set(pathname, rows);
+  groups.set(key, rows);
 }
 
-for (const [pathname, rows] of groups) {
+for (const [key, rows] of groups) {
   const medians = {};
 
   for (const category of CATEGORIES) {
@@ -44,7 +46,10 @@ for (const [pathname, rows] of groups) {
     medians[category] = values[Math.floor(values.length / 2)];
   }
 
-  console.log(`\n${pathname}`);
+  const clsValues = rows.map((row) => row.cls).sort((a, b) => a - b);
+  medians.cls = clsValues[Math.floor(clsValues.length / 2)];
+
+  console.log(`\n${key}`);
   console.table(rows);
   console.log("Median:", medians);
 }
